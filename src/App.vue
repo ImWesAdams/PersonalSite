@@ -3,7 +3,7 @@
     <div class="navitem">
       <router-link to="/">Home</router-link> |
       <router-link to="/AboutMe">About Me</router-link> |
-      <router-link to="/Resume">Resume</router-link>
+      <router-link to="/Resume">Resume and Skills</router-link>
     </div>
     <router-view></router-view>
     <!-- <WhatImUpTo> </WhatImUpTo> -->

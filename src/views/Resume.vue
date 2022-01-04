@@ -41,7 +41,8 @@ Reliably informs corporate and product strategy.
      </div>
      <div class="skills">
       <div class="programming-skills">
-        <h1>Programming and Software Skills</h1>
+        <h1 class = "skill-header1">Programming and Software Skills</h1>
+        <h2 class = "skill-header2">My knowledge doesn't end with the normal data software stack...</h2>
         <div class="skill-item">
           <img alt="Python Logo" class="skill-logo-photo" src="../assets/1200px-Python-logo-notext.svg.png">
           <h2 class = "skill-description">I am experienced using Python to train and deploy Machine Learning models.
@@ -72,7 +73,7 @@ Reliably informs corporate and product strategy.
           <img alt="JS Logo" class="skill-logo-photo" src="../assets/600px-JavaScript-logo.png">
           <h2 class = "skill-description">I have experience leveraging JavaScript to create data-processing scripts in cloud systems (like Snowflake) and locally (in NodeJS).
             Similar to my work with front-end development, my job responsibilities have never explicitly listed back-end development, but I have found that knowing how systems development works
-              has helped me to decipher and analyze deployed systems and to unlock more power in current
+              has helped me to decipher and analyze deployed systems and to perform more advanced processing of data in multiple stack environments.
           </h2>
         </div>
         <h2 class="other-skills-header">and more...</h2>
@@ -92,6 +93,10 @@ Reliably informs corporate and product strategy.
           <figure>
             <img alt="Looker" class="other-skill-logo-photo" src="../assets/looker_logo_meta_v0005.png">
             <figcaption>Looker</figcaption>
+          </figure>
+          <figure>
+            <img alt="GitHub" class="other-skill-logo-photo" src="../assets/github-logo.png">
+            <figcaption>GitHub</figcaption>
           </figure>
           <figure>
             <img alt="NodeJS" class="other-skill-logo-photo" src="../assets/1200px-Node.js_logo.svg.png">
@@ -119,25 +124,111 @@ Reliably informs corporate and product strategy.
             <img alt="Excel" class="other-skill-logo-photo" src="../assets/Microsoft_Office_Excel_(2019–present).svg.png">
             <figcaption>Excel</figcaption>
           </figure>
-          <!-- <figure>
+          <figure>
             <img alt="Plotly" class="other-skill-logo-photo" src="../assets/plotly-logo.png">
             <figcaption>Plotly</figcaption>
-          </figure> -->
+          </figure>
+          <figure>
+            <img alt="Pandas" class="other-skill-logo-photo" src="../assets/pandas-logo.png">
+            <figcaption>Pandas</figcaption>
+          </figure>
+          <figure>
+            <img alt="AWS SageMaker" class="other-skill-logo-photo" src="../assets/SageMaker-logo.jpg">
+            <figcaption>AWS SageMaker</figcaption>
+          </figure>
+          <figure>
+            <img alt="Sisense" class="other-skill-logo-photo" src="../assets/Sisense-Logo.png">
+            <figcaption>Sisense</figcaption>
+          </figure>
+          <figure>
+            <img alt="Stitch ETL" class="other-skill-logo-photo" src="../assets/stitch-logo.png">
+            <figcaption>Stitch ETL</figcaption>
+          </figure>
         </div>
       </div>
       <div class="soft-skills">
-        <h1>Soft Skills</h1>
+        <h1 class="skill-header1">Soft Skills</h1>
+        <h2 class = "skill-header2">I believe that being the best requires skills beyond the tech stack...</h2>
+        <div class="skill-item">
+          <img alt="Leadership" class="skill-logo-photo" src="../assets/teamlead.png">
+          <h2 class = "skill-description">I have worked as both a team lead and as an individual contributor for various projects in data and optimization, using Agile, Kanban, and other methdologies (and self-brewed versions of them).
+            Having these experiences helps me to more effectively contribute to, guide, and craft the work and outcomes of initiatives.
+          </h2>
+        </div>
+        <div class="skill-item">
+          <img alt="Communication" class="skill-logo-photo" src="../assets/communication.jpg">
+          <h2 class = "skill-description">I am an adroit communicator, both digitally and with my voice.
+            I feel that I learn more and make better impressions when I listen and recruit input more than I talk.
+            When I talk, I work to make things understandable, and I excel at explaining complicated topics to people with minimal familiarity.
+          </h2>
+        </div>
+        <div class="skill-item">
+          <img alt="Diligence" class="skill-logo-photo" src="../assets/document.png">
+          <h2 class = "skill-description">I am a diligent and efficient worker. Work is a fulfilling and satisfying part of my life - I often get lost in a state of "flow" in my work, and I especially
+            enjoy the opportunities to hone current skills and develop new ones on the job. I take pride in meeting deadlines and exceeding expectations.
+          </h2>
+        </div>
+        <div class="skill-item">
+          <img alt="Learning" class="skill-logo-photo" src="../assets/learning.jpg">
+          <h2 class = "skill-description">I am a highly curious person with a passion for learning. I spend a lot of time in self-study, in online classes, and behind books.
+            I am almost always learning and refining new skills. If I don't actively have a new challenge to overcome or new knowledge to obtain, I feel bored and unfulfilled. I am a passionate believer
+            in relentless self-improvement.
+
+          </h2>
+        </div>
       </div>
      </div>
    </div>
  </template>
 
 <script>
-var jQuery = require('jquery');
-console.log(jQuery)
+
+// import handleClick from '@/main.js';
+export default {
+  methods: {
+    scroll_left() {
+      let content = document.querySelector(".other-skills");
+      content.scrollLeft -= 50;
+    },
+    scroll_right() {
+      let content = document.querySelector(".other-skills");
+      content.scrollLeft += 50;
+    },
+    scroll_up() {
+      let content = document.querySelector(".other-skills");
+      content.scrollUp += 50;
+    },
+    scrollToTop() {
+    window.scrollTo(0,0);
+  }
+  }
+};
 </script>
 
 <style scoped>
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--lightestgrey);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .skill-header1 {
+    padding-top: 15px;
+  }
 .resume-links {
   display: flex;
   justify-content: space-between;
@@ -165,6 +256,8 @@ console.log(jQuery)
   margin-top: 0px;
   margin-bottom: 0px;
   overflow-x: scroll;
+  /* background-color: #f8f8ff; */
+  /* filter: drop-shadow(0px 0px 7px rgba(150, 150, 150, .7)); */
 }
 
 .skill-logo-photo {
