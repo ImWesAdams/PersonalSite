@@ -32,10 +32,16 @@ Reliably informs corporate and product strategy.
            <label>PDF of Resume</label>
          </a>
        </div>
+       <div class="github-link">
+         <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
+           <a href="github-link-goes-here" target="_blank">
+           <label>GitHub</label>
+         </a>
+       </div>
      </div>
      <div class="skills">
-      <div class="hard-skills">
-        <h1>Hard Skills</h1>
+      <div class="programming-skills">
+        <h1>Programming and Software Skills</h1>
         <div class="skill-item">
           <img alt="Python Logo" class="skill-logo-photo" src="../assets/1200px-Python-logo-notext.svg.png">
           <h2 class = "skill-description">I am experienced using Python to train and deploy Machine Learning models.
@@ -55,6 +61,69 @@ Reliably informs corporate and product strategy.
               Spotfire, and more.
           </h2>
         </div>
+        <div class="skill-item">
+          <img alt="VueJS Logo" class="skill-logo-photo" src="../assets/logo.png">
+          <h2 class = "skill-description">I have substantial experience with front-end development in VueJS, HTML, and CSS. In fact, I created this website myself with those tools!
+            Even though my job responsibilities never explicitly listed front-end development, I have found that knowing how web development works has helped me
+              to process website structures and people's interactions with websites and to contribute knowledgably to site engagement and monitoring projects.
+          </h2>
+        </div>
+        <div class="skill-item">
+          <img alt="JS Logo" class="skill-logo-photo" src="../assets/600px-JavaScript-logo.png">
+          <h2 class = "skill-description">I have experience leveraging JavaScript to create data-processing scripts in cloud systems (like Snowflake) and locally (in NodeJS).
+            Similar to my work with front-end development, my job responsibilities have never explicitly listed back-end development, but I have found that knowing how systems development works
+              has helped me to decipher and analyze deployed systems and to unlock more power in current
+          </h2>
+        </div>
+        <h2 class="other-skills-header">and more...</h2>
+        <div class="other-skills">
+          <figure>
+            <img alt="TensorFlow" class="other-skill-logo-photo" src="../assets/Tensorflow_logo.svg.png">
+            <figcaption>TensorFlow</figcaption>
+          </figure>
+          <figure>
+            <img alt="Scikit-learn" class="other-skill-logo-photo" src="../assets/1200px-Scikit_learn_logo_small.svg.png">
+            <figcaption>Scikit-learn</figcaption>
+          </figure>
+          <figure>
+            <img alt="Matplotlib" class="other-skill-logo-photo" src="../assets/Created_with_Matplotlib-logo.svg.png">
+            <figcaption>Matplotlib</figcaption>
+          </figure>
+          <figure>
+            <img alt="Looker" class="other-skill-logo-photo" src="../assets/looker_logo_meta_v0005.png">
+            <figcaption>Looker</figcaption>
+          </figure>
+          <figure>
+            <img alt="NodeJS" class="other-skill-logo-photo" src="../assets/1200px-Node.js_logo.svg.png">
+            <figcaption>NodeJS</figcaption>
+          </figure>
+        <!-- </div>
+        <div class="other-skills"> -->
+          <figure>
+            <img alt="Snowflake" class="other-skill-logo-photo" src="../assets/snowflake-logo.png">
+            <figcaption>Snowflake</figcaption>
+          </figure>
+          <figure>
+            <img alt="Data Build Tool (dbt)" class="other-skill-logo-photo" src="../assets/dbt-logo.png">
+            <figcaption>dbt</figcaption>
+          </figure>
+          <figure>
+            <img alt="R" class="other-skill-logo-photo" src="../assets/Rlogo.png">
+            <figcaption>R</figcaption>
+          </figure>
+          <figure>
+            <img alt="SAS" class="other-skill-logo-photo" src="../assets/sas-logo.png">
+            <figcaption>SAS</figcaption>
+          </figure>
+          <figure>
+            <img alt="Excel" class="other-skill-logo-photo" src="../assets/Microsoft_Office_Excel_(2019–present).svg.png">
+            <figcaption>Excel</figcaption>
+          </figure>
+          <!-- <figure>
+            <img alt="Plotly" class="other-skill-logo-photo" src="../assets/plotly-logo.png">
+            <figcaption>Plotly</figcaption>
+          </figure> -->
+        </div>
       </div>
       <div class="soft-skills">
         <h1>Soft Skills</h1>
@@ -64,18 +133,38 @@ Reliably informs corporate and product strategy.
  </template>
 
 <script>
-
+var jQuery = require('jquery');
+console.log(jQuery)
 </script>
 
 <style scoped>
 .resume-links {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   /* padding-left: 50px; */
   /* padding-right: 100px; */
-  margin: 300px;
+  margin: 15%;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+.skill-item {
+  display: flex;
+  align-items: center;
+  padding: 0 0 10px 10px;
+  margin: 0 100px 0 100px;
+}
+
+.other-skills {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding-left: 50px; */
+  /* padding-right: 100px; */
+  margin: 3%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow-x: scroll;
 }
 
 .skill-logo-photo {
@@ -83,23 +172,51 @@ Reliably informs corporate and product strategy.
     width: auto;
     max-width: 128px;
     max-height: 128px;
-    float: left;
-    vertical-align: middle;
+    /* float: left; */
+    /* vertical-align: middle; */
     /* display: flex; */
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* margin: 10px 10px 15px 150px; */
+}
+.other-skill-logo-photo {
+    height: auto;
+    width: auto;
+    max-width: 128px;
+    max-height: 128px;
+    display: inline-block;
+    /* float: left; */
+    /* vertical-align: middle; */
+    /* display: flex; */
+    /* display: flex; */
+    /* align-items: center; */
     /* margin: 10px 10px 15px 150px; */
 }
 .skill-description {
-  float: middle;
+  /* float: middle; */
+  /* display: flex; */
   /* margin: 10px 10px 15px 0px; */
   /* display: block; */
-  padding: 0px 150px 0px 150px;
+  padding-left: 15px;
   /* display: inline-block; */
 }
 .skills, .skill-item, .skill-logo-photo {
-  padding-top: 10px;
+  /* padding-top: 10px; */
   /* padding-bottom: 10px; */
 }
+
+/* figure {
+    display: inline-block;
+    border: 1px dotted gray;
+    margin: 20px;
+}
+figure img {
+    vertical-align: top;
+}
+figure figcaption {
+    border: 1px dotted blue;
+    text-align: center;
+} */
 /* .skill-item {
   margin-top: 10px;
 } */
