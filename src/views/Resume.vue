@@ -22,27 +22,39 @@ Reliably informs corporate and product strategy.
    <div class="all">
      <div class="resume-links">
        <div class="linkedin-link">
-         <a href="linkedin-link-goes-here" target="_blank">
-           <label>LinkedIn</label>
+         <a href="https://google.com" target="_blank">
+           <button class = "link-button">
+             <!-- <label class = "link"> -->
+               LinkedIn
+             <!-- </label> -->
+           </button>
          </a>
        </div>
        <div class="resume-link">
          <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
            <a href="resume.pdf" target="_blank">
-           <label>PDF of Resume</label>
+             <button class = "link-button">
+               <!-- <label class = "link"> -->
+                 Resume
+               <!-- </label> -->
+             </button>
          </a>
        </div>
        <div class="github-link">
          <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
            <a href="github-link-goes-here" target="_blank">
-           <label>GitHub</label>
-         </a>
+              <button class = "link-button">
+                <!-- <label class = "link"> -->
+                GitHub
+                <!-- </label> -->
+              </button>
+           </a>
        </div>
      </div>
      <div class="skills">
       <div class="programming-skills">
         <h1 class = "skill-header1">Programming and Software Skills</h1>
-        <h2 class = "skill-header2">My knowledge doesn't end with the normal data software stack...</h2>
+        <h2 class = "skill-header2">I know more than just the standard data software stack.</h2>
         <div class="skill-item">
           <img alt="Python Logo" class="skill-logo-photo" src="../assets/1200px-Python-logo-notext.svg.png">
           <h2 class = "skill-description">I am experienced using Python to train and deploy Machine Learning models.
@@ -148,10 +160,10 @@ Reliably informs corporate and product strategy.
       </div>
       <div class="soft-skills">
         <h1 class="skill-header1">Soft Skills</h1>
-        <h2 class = "skill-header2">I believe that being the best requires skills beyond the tech stack...</h2>
+        <h2 class = "skill-header2">I believe that being the best requires skills beyond the keyboard and mouse.</h2>
         <div class="skill-item">
           <img alt="Leadership" class="skill-logo-photo" src="../assets/teamlead.png">
-          <h2 class = "skill-description">I have worked as both a team lead and as an individual contributor for various projects in data and optimization, using Agile, Kanban, and other methdologies (and self-brewed versions of them).
+          <h2 class = "skill-description">I have worked as both a team lead and as an individual contributor for various projects in data and optimization, using Agile, Kanban, and other methdologies (and home-brewed versions of them).
             Having these experiences helps me to more effectively contribute to, guide, and craft the work and outcomes of initiatives.
           </h2>
         </div>
@@ -173,7 +185,6 @@ Reliably informs corporate and product strategy.
           <h2 class = "skill-description">I am a highly curious person with a passion for learning. I spend a lot of time in self-study, in online classes, and behind books.
             I am almost always learning and refining new skills. If I don't actively have a new challenge to overcome or new knowledge to obtain, I feel bored and unfulfilled. I am a passionate believer
             in relentless self-improvement.
-
           </h2>
         </div>
       </div>
@@ -208,7 +219,7 @@ export default {
 <style scoped>
 ::-webkit-scrollbar {
     width: 10px;
-    height: 10px;
+    height: 13px;
   }
 
   /* Track */
@@ -219,30 +230,59 @@ export default {
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 5px;
+    border-radius: 15px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+  /* .link {
+    color: blue;
+  } */
+
+  .link-button {
+    color: darkblue;
+    background-color: inherit;
+    /* background-color: lightgray; */
+    /* border: 2px solid #4CAF50; */
+    box-shadow: rgba(27, 31, 35, .1) 2px 2px 0;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 7px;
+    cursor: pointer;
+    vertical-align: middle;
+    font-family: monaco;
+    padding: 2px 15px;
+    font-size: 15px;
+    /* padding: 0 3px 0 3px; */
+    /* border: 0px; */
+    /* border-radius: 10%; */
+    /* width: 10vw; */
+    /* font-style: bold; */
+  }
+
+  .link-button:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+
   .skill-header1 {
-    padding-top: 15px;
+    padding-top: 0;
   }
 .resume-links {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   /* padding-left: 50px; */
   /* padding-right: 100px; */
-  margin: 15%;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  padding: 1% 10% 0 10%;
 }
+
 .skill-item {
   display: flex;
   align-items: center;
-  padding: 0 0 10px 10px;
+  /* padding: 0 0 10px 10px; */
   margin: 0 100px 0 100px;
 }
 
@@ -258,6 +298,30 @@ export default {
   overflow-x: scroll;
   /* background-color: #f8f8ff; */
   /* filter: drop-shadow(0px 0px 7px rgba(150, 150, 150, .7)); */
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  /* color: #228B22; */
+}
+
+.skill-header1 {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  font-weight: ;
+}
+
+.skill-header2 {
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 0;
 }
 
 .skill-logo-photo {
@@ -291,6 +355,7 @@ export default {
   /* margin: 10px 10px 15px 0px; */
   /* display: block; */
   padding-left: 15px;
+  padding-right: 25px;
   /* display: inline-block; */
 }
 .skills, .skill-item, .skill-logo-photo {
