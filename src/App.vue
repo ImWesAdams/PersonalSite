@@ -8,9 +8,9 @@
         <!-- <nav class="navbar" role="navigation" aria-label="main navigation"> -->
       </div>
       <div id="nav" class="navitem">
-        <router-link to="/" class = "router">Home</router-link>
-        <router-link to="/AboutMe" class = "router">About Me</router-link>
-        <router-link to="/Resume" class = "router">Resume and Skills</router-link>
+        <router-link to="/" class = "router" style="font-weight:normal; text-decoration:none; :visited: none;">Home</router-link>
+        <router-link to="/AboutMe" class = "router" style="font-weight:normal; text-decoration:none;">About Me</router-link>
+        <router-link to="/Resume" class = "router" style="font-weight:normal; text-decoration:none;">Resume and Skills</router-link>
       </div>
     </div>
     <!-- <WhatImUpTo> </WhatImUpTo> -->
@@ -46,6 +46,11 @@ export default {
   padding: 0 3px;
 
 }
+
+a:visited {
+  color: inherit;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -75,7 +80,7 @@ export default {
   /* justify-content: space-between; */
   /* flex-direction: column; */
   /* text-align: right; */
-  padding-top: 5px;
+  padding-top: 0px;
 }
 
 .router-name {
@@ -84,6 +89,7 @@ export default {
 }
 
 .name {
+  padding-left: 5px;
   /* text-align: right; */
   /* display: flex; */
   /* text-decoration: none; */

@@ -89,7 +89,7 @@ Reliably informs corporate and product strategy.
           </h2>
         </div>
         <h2 class="other-skills-header">and more...</h2>
-        <div class="other-skills">
+        <div class="other-skills" id="other-skills1" @scroll="onScroll" @mousedown="pauseScroll = true" @mouseup="pauseScroll = false">
           <figure>
             <img alt="TensorFlow" class="other-skill-logo-photo" src="../assets/Tensorflow_logo.svg.png">
             <figcaption>TensorFlow</figcaption>
@@ -197,50 +197,119 @@ Reliably informs corporate and product strategy.
 // import handleClick from '@/main.js';
 export default {
   methods: {
-    scroll_left() {
-      let content = document.querySelector(".other-skills");
-      content.scrollLeft -= 50;
-    },
-    scroll_right() {
-      let content = document.querySelector(".other-skills");
-      content.scrollLeft += 50;
-    },
-    scroll_up() {
-      let content = document.querySelector(".other-skills");
-      content.scrollUp += 50;
-    },
-    scrollToTop() {
-    window.scrollTo(0,0);
+    onScroll ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
+      let content2 =  document.getElementById('other-skills1');
+     if (scrollLeft + clientWidth >= scrollWidth) {
+       clearInterval(this.timerRight);
+      console.log('reached right end onScroll');
+      this.timerLeft = setInterval(() => {
+        if (this.pauseScroll) {
+          // console.log('pauseScroll is true');
+          void(0);
+        }
+         else {content2.scrollLeft -= 1;
+         }
+      }, 5)
+   }
+   if (scrollLeft <= 0) {
+     clearInterval(this.timerLeft);
+     console.log('reached left end onScroll');
+     this.timerRight = setInterval(() => {
+       if (this.pauseScroll) {
+         // console.log('pauseScroll is true');
+         void(0);
+       }
+        else {   content2.scrollLeft += 1;
+        }
+      }, 5)
+}
+}
+},
+//   scrollBack ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
+//     if (scrollLeft + clientWidth >= scrollWidth) {
+//       console.log('reached right end');
+//     // this.timer = setInterval(() => {
+//     //   // console.log('test');
+//     //   // let content = document.querySelector(".other-skills");
+//     //   // content.scrollLeft -= 50;
+//     //   let content2 =  document.getElementById('other-skills1');
+//     //   // if (this.onScroll()>0) {
+//     //   content2.scrollLeft -= 3*10;
+//     //   console.log(window.innerWidth);
+//     //   // console.log(this.onScroll);
+//     // // }
+//     //   // content2.addEventListener('scroll', console.log('scrolling'));
+//     //   // console.log(content2);
+//     // }, 5)
+//    }
+//   }
+// },
+  mounted: // ~~this only runs once at the start of the page load. downstream events are then handled by onScroll
+   function scrollOnStart () { // ~~scroll right on startup
+     let content2 =  document.getElementById('other-skills1');
+  this.timerRight = setInterval(() => {
+    if (this.pauseScroll) {
+      // console.log('pauseScroll is true');
+      void(0);
+    }
+    else {
+    // if this.onScroll({ target: { scrollLeft, clientWidth, scrollWidth }}) < 1 {
+      content2.scrollLeft += 1;
+      // console.log(content2.scrollHeight);
+      if (content2.scrollLeft+content2.clientWidth>=content2.scrollWidth) {
+        console.log('reached right end mounted');
+        clearInterval(this.timerRight);
+        return;
+      }
+    // }
   }
+}, 5)
+},
+  // function() { //~~ old scroll right on start - did not have right behavior when combined with css smooth scroll-behavior
+  //   let content2 =  document.getElementById('other-skills1');
+  //   content2.scrollTo(500,0);
+  // },
+
+data() {
+  return {
+    timer: null,
+    pauseScroll: false
   }
+},
+
+beforeUnmount() {
+  clearInterval(this.timer)
+}
 };
 </script>
 
 <style scoped>
+
+
 ::-webkit-scrollbar {
+  display: none;
+}
+/* ~~ OLD - scrollbar formatting
+/* ::-webkit-scrollbar {
     width: 10px;
     height: 13px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: var(--lightestgrey);
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 15px;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  /* .link {
-    color: blue;
   } */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: var(--lightestgrey);
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 15px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
 
   .link-button {
     color: darkblue;
@@ -286,6 +355,15 @@ export default {
   margin: 0 100px 0 100px;
 }
 
+/* @keyframes bannermove {
+  0% {
+      transform: translate(25%, 0);
+  }
+  100% {
+      transform: translate(-125%, 0%);
+  }
+} */
+
 .other-skills {
   display: flex;
   justify-content: space-between;
@@ -296,9 +374,18 @@ export default {
   margin-top: 0px;
   margin-bottom: 0px;
   overflow-x: scroll;
+  /* scroll-behavior: smooth; */
+  /* animation: bannermove 10s linear infinite; */
+  /* animation-direction: alternate; */
+  /* width: 100vw; */
+  /* max-width: 100% !important; */
   /* background-color: #f8f8ff; */
   /* filter: drop-shadow(0px 0px 7px rgba(150, 150, 150, .7)); */
 }
+
+/* .all::-webkit-scrollbar {
+    display: none;
+} */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
