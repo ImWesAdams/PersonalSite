@@ -1,39 +1,37 @@
 <template>
-  <div id="nav1">
-    <div class = "main-navbar">
-      <div class="name">
-        <router-link to="/" class="router-name" style="text-decoration: none; color: inherit;">
-          <div class = "first-name">Wes</div> <div class = "last-name" style="font-stretch: 200%;">Adams</div>
-        </router-link>
-        <!-- <nav class="navbar" role="navigation" aria-label="main navigation"> -->
+  <!-- <div id="wrapper">
+    <div id="header">
+      <div id="left-header">
+        <router-link to="/" style = "text-decoration:none; color:inherit;" id = "name">Wes Adams</router-link>
       </div>
-      <div id="nav" class="navitem">
-        <router-link to="/" class = "router" style="font-weight:normal; text-decoration:none; :visited: none;">Home</router-link>
-        <router-link to="/AboutMe" class = "router" style="font-weight:normal; text-decoration:none;">About Me</router-link>
-        <router-link to="/Resume" class = "router" style="font-weight:normal; text-decoration:none;">Resume and Skills</router-link>
-      </div>
+      <nav id="nav-items">
+        <ul>
+        <li><router-link to="/" class = "router" style="font-weight:normal; text-decoration:none;">Home</router-link></li>
+        <li><router-link to="/AboutMe" class = "router" style="font-weight:normal; text-decoration:none;">About Me</router-link></li>
+        <li><router-link to="/Resume" class = "router" style="font-weight:normal; text-decoration:none;">Resume and Skills</router-link></li>
+        </ul>
+      </nav>
     </div>
-    <!-- <WhatImUpTo> </WhatImUpTo> -->
-  </div>
-  <router-view></router-view>
-  <!-- <div ="upto">
-    <ul aria-labelledby="list-summary" class="stack-large">
-      <li v-for="item in ToDoItems" :key="item.link">
-
-      </li>
-    </ul>
   </div> -->
-  <!-- <router-view></router-view> -->
+  <!-- ~~ I got the gorgeous header template from here: https://codepen.io/tacosontitan/pen/zYxXzKo -->
+  <div class="container">
+	<div class="header-bar">
+		<h1 class="name"><router-link to="/" class = "router" style="font-weight:bold; text-decoration:none; color:inherit;">Wes Adams</router-link></h1>
+		<ul class="slider-menu">
+      <li><router-link to="/" class = "router" style="font-weight:normal; text-decoration:none;">Home</router-link></li>
+      <li><router-link to="/AboutMe" class = "router" style="font-weight:normal; text-decoration:none;">About Me</router-link></li>
+      <li><router-link to="/Resume" class = "router" style="font-weight:normal; text-decoration:none;">Resume and Skills</router-link></li>
+		</ul>
+	</div>
+</div>
+<router-view></router-view>
 </template>
 
 <script>
 
-// import Home from '@/views/Home.vue';
-
 export default {
   name: 'app',
   components: {
-    // Home
   },
   data() {
   },
@@ -42,109 +40,130 @@ export default {
 </script>
 
 <style>
-.first-name {
-  padding: 0 3px;
 
-}
-
-a:visited {
-  color: inherit;
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 
-#nav1 {
-  padding: 5px;
-  font-size: large;
-  /* text-align: center; */
+@import url('https://fonts.googleapis.com/css?family=Parisienne|Quicksand&display=swap');
+
+.container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+  padding-bottom: 5px;
 }
 
-.navitem {
-  /* margin: 10px; */
-  /* text-align: center; */
-  /* display: flex; */
-  /* padding: 10px; */
-  /* align: left; */
-  padding: 0 50vw 0 0;
+.header-bar {
+	position: relative;
+	width: 50%;
+	min-width: 300px;
+	height: 50px;
+	/* border: 10px solid transparent; */
+	/* border-top: 10px solid #fffa; */
+	/* border-left: 10px solid #fffa; */
+  /* background-color: rgb(232,232,232); */
+	/* box-shadow: 4px 4px 5px 0px rgba(38, 97, 156, 0.25) inset; */
+}
+.header-bar::after {
+	content: '';
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	width: 100%;
+	height: 50px;
+	/* border: 10px solid transparent; */
+	/* border-bottom: 10px solid #fffa; */
+	/* border-right: 10px solid #fffa; */
+	transition: 0.3s linear all;
+}
+.header-bar > .name {
+	position: absolute;
+	top: calc(50% - 20px);
+	left: 10px;
+	transform: translateY(-50%);
+	/* color: #fffc; */
+	font-family: 'Parisienne', cursive;
+	cursor: default;
+	user-select: none;
+}
+.slider-menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	z-index: 1;
+}
+.slider-menu > li {
+	display: inline-flex;
+	padding: 14px;
+	margin-left: 2px;
+	font-family: 'Quicksand', sans-serif;
+	/* color: #fff; */
+	cursor: pointer;
+	transition: 0.3s linear all;
+	user-select: none;
+}
+.slider-menu > li:hover {
+	/* color: #faa; */
+	box-shadow: 0 50px 5px rgba(15, 10, 222, 0.15) inset;
 }
 
-.main-navbar {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
-  /* flex-direction: column; */
-  /* text-align: right; */
-  padding-top: 0px;
+/* #header {
+  box-sizing: border-box;
+  background: #ffc301;
+  padding: 10px 15px;
+  display: table;
+  width: 100%;
+  height: 70px;
 }
 
-.router-name {
-  padding: 0 30px 0 0px;
-  /* font-size: 100px; */
+#wrapper {
+  height: 50px;
 }
 
-.name {
-  padding-left: 5px;
-  /* text-align: right; */
-  /* display: flex; */
-  /* text-decoration: none; */
-  /* background-color: darkgreen; */
-  /* align-items: center; */
-  /* text-align: left; */
-  /* text-align: left; */
-  /* font-size: 20px; */
-  /* font: Brush Script MT, Brush Script Std, cursive; */
+#left-header {
+  float: left;
 }
 
-.first-name {
+#nav-items {
+  vertical-align: middle;
+  display: table-cell;
+}
+
+#nav-items ul {
+  text-align: center;
+}
+
+#nav-items ul li {
+  display: inline-block;
+  vertical-align: top;
+} */
+
+h2 {
   font-weight: normal;
-  font-family: "Lucida Console", "Courier New", monospace;
-  /* font-stretch: 200%; */
-  /* text-decoration: none; */
-  /* align-items: center; */
-  /* font-size: 15px; */
 }
 
-.last-name {
-  font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
-  text-decoration: none;
-  /* align-items: center; */
-  /* font-stretch: extra-condensed; */
-  /* font-size: 30px; */
-  /* transform: scaleY(0.5); */
+a:visited { /* ~~ router links count as a links so this gets rid of the visited color change */
+  color: inherit;
 }
 
-.first-name a {
-  text-decoration: none;
-}
-
-.router {
-  padding: 0 15px;
-}
-
-.router-name {
-  display: flex;
-  /* padding: 0 1px; */
-}
-
-#nav {
-  font-weight: bold;
-  color: #2c3e50;
-  /* align-items: center; */
-  /* text-align: right; */
-}
-
-#nav a.router-link-exact-active {
+.container a.router-link-exact-active {
   color: #42b983;
 }
 
-#nav .name.router-link-exact-active {
+.container .name.router-link-exact-active {
   color: #2c3e50;
 }
 </style>
