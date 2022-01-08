@@ -169,7 +169,7 @@ Reliably informs corporate and product strategy.
         </div>
         <div class="skill-item">
           <img alt="Communication" class="skill-logo-photo" src="../assets/communication.jpg">
-          <h2 class = "skill-description">I am an adroit communicator, both digitally and with my voice.
+          <h2 class = "skill-description">I am an adroit communicator, both digitally and verbally.
             I feel that I learn more and make better impressions when I listen and recruit input more than I talk.
             When I talk, I work to make things understandable, and I excel at explaining complicated topics to people with minimal familiarity.
           </h2>

@@ -16,7 +16,17 @@
   <!-- ~~ I got the gorgeous header template from here: https://codepen.io/tacosontitan/pen/zYxXzKo -->
   <div class="container">
 	<div class="header-bar">
-		<h1 class="name"><router-link to="/" class = "router" style="font-weight:bold; text-decoration:none; color:inherit;">Wes Adams</router-link></h1>
+    <!-- <div class="name"> -->
+    <!-- ~~ the clickbox for this router is out of wack because of the translate-y.
+      was thinking about fixing like this in style (display:inline-block; position:relative; z-index:1; padding-top:10em; margin-top:-10em;)
+      in accordance with this thread (https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button)
+   -->
+		<h1 class="name">
+      <!-- <a href="/">Wes Adams</a> -->
+      <router-link to="/" class="name-link" style="font-weight:bold; text-decoration:none; color:inherit; border-style: solid;
+      ">Wes Adams</router-link>
+    </h1>
+    <!-- </div> -->
 		<ul class="slider-menu">
       <li><router-link to="/" class = "router" style="font-weight:normal; text-decoration:none;">Home</router-link></li>
       <li><router-link to="/AboutMe" class = "router" style="font-weight:normal; text-decoration:none;">About Me</router-link></li>
@@ -67,6 +77,7 @@ export default {
 	width: 50%;
 	min-width: 300px;
 	height: 50px;
+  pointer-events: none;
 	/* border: 10px solid transparent; */
 	/* border-top: 10px solid #fffa; */
 	/* border-left: 10px solid #fffa; */
@@ -94,7 +105,18 @@ export default {
 	font-family: 'Parisienne', cursive;
 	cursor: default;
 	user-select: none;
+  pointer-events: all;
 }
+
+/* .header-bar > .name > a {
+	position: absolute;
+	top: calc(50% - 20px);
+	left: 10px;
+	transform: translateY(-50%);
+	font-family: 'Parisienne', cursive;
+	cursor: default;
+	user-select: none;
+} */
 .slider-menu {
 	position: absolute;
 	top: 0;
@@ -104,6 +126,7 @@ export default {
 	margin: 0;
 	padding: 0;
 	z-index: 1;
+  pointer-events: all;
 }
 .slider-menu > li {
 	display: inline-flex;
