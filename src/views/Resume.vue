@@ -89,7 +89,7 @@ Reliably informs corporate and product strategy.
           </h2>
         </div>
         <h2 class="other-skills-header">and more...</h2>
-        <div class="other-skills" id="other-skills1" @scroll="onScroll" @mousedown="pauseScroll = true" @mouseup="pauseScroll = false">
+        <div class="other-skills" id="other-skills1" @scroll="onScroll($event)" @mousedown="pauseScroll = true" @mouseup="pauseScroll = false">
           <figure>
             <img alt="TensorFlow" class="other-skill-logo-photo" src="../assets/Tensorflow_logo.svg.png">
             <figcaption>TensorFlow</figcaption>
@@ -197,9 +197,12 @@ Reliably informs corporate and product strategy.
 // import handleClick from '@/main.js';
 export default {
   methods: {
-    onScroll ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
-      let content2 =  document.getElementById('other-skills1');
-     if (scrollLeft + clientWidth >= scrollWidth) {
+    onScroll(selectedItem) {
+      // let content2 = selectedItem.target;
+      // console.log(content2.scrollLeft);
+    // onScroll ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
+    //   let content2 =  document.getElementById('other-skills1');
+     if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
        clearInterval(this.timerRight);
       console.log('reached right end onScroll');
       this.timerLeft = setInterval(() => {
@@ -207,11 +210,11 @@ export default {
           // console.log('pauseScroll is true');
           void(0);
         }
-         else {content2.scrollLeft -= 1;
+         else {selectedItem.target.scrollLeft -= 1;
          }
       }, 5)
    }
-   if (scrollLeft <= 0) {
+   if (selectedItem.target.scrollLeft <= 0) {
      clearInterval(this.timerLeft);
      console.log('reached left end onScroll');
      this.timerRight = setInterval(() => {
@@ -219,7 +222,7 @@ export default {
          // console.log('pauseScroll is true');
          void(0);
        }
-        else {   content2.scrollLeft += 1;
+        else {   selectedItem.target.scrollLeft += 1;
         }
       }, 5)
 }
@@ -321,7 +324,7 @@ beforeUnmount() {
     border-radius: 7px;
     cursor: pointer;
     vertical-align: middle;
-    font-family: monaco;
+    /* font-family: monaco; */
     padding: 2px 15px;
     font-size: 15px;
     /* padding: 0 3px 0 3px; */
@@ -352,7 +355,7 @@ beforeUnmount() {
   display: flex;
   align-items: center;
   /* padding: 0 0 10px 10px; */
-  margin: 0 100px 0 100px;
+  margin: 0 10% 0 10%;
 }
 
 /* @keyframes bannermove {
