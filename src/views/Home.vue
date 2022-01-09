@@ -24,40 +24,10 @@
              Outside of work, I mostly exercise, code, cook, watch sports, and read.
            </h2>
         </div>
-        <div class="resume-links">
-          <div class="resume-link">
-            <a href="https://google.com" target="_blank">
-              <button class = "link-button">
-                <!-- <label class = "link"> -->
-                  LinkedIn
-                <!-- </label> -->
-              </button>
-            </a>
-          </div>
-          <div class="resume-link">
-            <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
-              <a href="resume.pdf" target="_blank">
-                <button class = "link-button">
-                  <!-- <label class = "link"> -->
-                    Resume
-                  <!-- </label> -->
-                </button>
-            </a>
-          </div>
-          <div class="resume-link">
-            <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
-              <a href="github-link-goes-here" target="_blank">
-                 <button class = "link-button">
-                   <!-- <label class = "link"> -->
-                   GitHub
-                   <!-- </label> -->
-                 </button>
-              </a>
-          </div>
-        </div>
+        <ExternalLinks></ExternalLinks>
           <h2 class="up-to">What have I been working on recently?</h2>
-        <div class="list">
-          <ul aria-labelledby="list-summary" class="up-to-list">
+        <div class="up-to-list">
+          <ul aria-labelledby="list-summary" class="up-to-ul">
             <li v-for="item in WhatImUpToItems" :key="item.id" class="up-to-item">
               <div v-if="item.link === ''">
                 <WhatImUpTo :link="asd" :label="item.label" :date="item.date"></WhatImUpTo>
@@ -76,17 +46,67 @@
 
 // import HomeHeader from '@/components/HomeHeader.vue';
 import WhatImUpTo from '@/components/WhatImUpTo.vue';
+import ExternalLinks from '@/components/ExternalLinks.vue';
 
 export default {
   name: 'Home',
   components: {
     // HomeHeader,
-    WhatImUpTo
+    WhatImUpTo,
+    ExternalLinks,
   },
   data() {
     return {
       WhatImUpToItems: [
         // Leave link empty with '' if no link and the site will not display this item as a link :-)
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
         { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
         { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
       ]
@@ -100,7 +120,7 @@ export default {
 h1 {
   margin: 0;
   padding: 0;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   text-decoration-thickness: 3px;
   /* text-decoration-color: grey; */
 }
@@ -116,9 +136,18 @@ h1 {
   text-align: center;
 }
 
-.list {
-  max-height: 1000px;
+.up-to-list {
+  max-height: 25vh;
   overflow: scroll;
+  /* background-color: gray; */
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  box-shadow: 1px 1px 1px 1px rgba(38, 97, 156, 0.25);
+  margin: 0 5vw;
+}
+.up-to-ul {
+  margin: 0;
+  padding: 0;
 }
 
 .headshot-photo {
@@ -145,38 +174,25 @@ h1 {
   padding: 5px 0;
   /* display: flex; */
 }
+
+ul li {
+  list-style: circle;
+}
 .short-about-text {
   /* padding: 0; */
   /* display: flex; */
   /* This doesn't actually seem to work right */
 }
-.short-about-header {
-  font-weight: bold;
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  /* display: flex; */
-  /* margin-top: 20px; */
-  /* text-align: left; */
-}
-/* br {
-  margin: 100px;
-} */
-/* .up-to-items > * + * {
-  margin-top: 2.5rem;
-} */
+
 .up-to-item {
-  list-style-type: none;
   font-size: 20px;
   margin-bottom: 7px;
 }
-.up-to-list {
-  margin: 0;
-  /* padding: 10px; */
-}
+
 .up-to {
   /* margin-bottom: 0px; */
   margin: 10px;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   text-decoration-thickness: 3px;
   font-weight: bold;
 }
@@ -192,6 +208,5 @@ img {
   margin: 0 auto;
   height: 100%;
   width: auto;
-  /* padding-bottom: 1000px; */
 }
 </style>

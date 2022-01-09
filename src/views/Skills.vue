@@ -22,37 +22,7 @@ Reliably informs corporate and product strategy.
    <div class="all">
      <div class="header">
        <h1 class = "h1-header">Oh yeah, I've got the skills!</h1>
-       <div class="resume-links">
-         <div class="resume-link">
-           <a href="https://google.com" target="_blank">
-             <button class = "link-button">
-               <!-- <label class = "link"> -->
-                 LinkedIn
-               <!-- </label> -->
-             </button>
-           </a>
-         </div>
-         <div class="resume-link">
-           <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
-             <a href="resume.pdf" target="_blank">
-               <button class = "link-button">
-                 <!-- <label class = "link"> -->
-                   Resume
-                 <!-- </label> -->
-               </button>
-           </a>
-         </div>
-         <div class="resume-link">
-           <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
-             <a href="github-link-goes-here" target="_blank">
-                <button class = "link-button">
-                  <!-- <label class = "link"> -->
-                  GitHub
-                  <!-- </label> -->
-                </button>
-             </a>
-         </div>
-       </div>
+       <ExternalLinks class = "externalLinks"></ExternalLinks>
      </div>
      <div class="skills">
       <div class="programming-skills">
@@ -198,8 +168,14 @@ Reliably informs corporate and product strategy.
 
 <script>
 
+import ExternalLinks from '@/components/ExternalLinks.vue';
+
 // import handleClick from '@/main.js';
 export default {
+  name: 'Skills',
+  components: {
+    ExternalLinks,
+  },
   methods: {
       scrollRight(selectedItem) {
         this.directionScroll = 'left';
@@ -260,36 +236,7 @@ export default {
         // console.log('reached left end scroll');
         this.scrollLeft(selectedItem);
       }
-    // var scrollCheck = 1;
-    // var position = 0;
-   //  if (this.pauseScroll) {
-   //    position = selectedItem.target.scrollLeft;
-   //    scrollCheck = 0;
-   //    console.log(position);
-   //    clearInterval(this.timerLeft);
-   //    this.timerLeft = 0;
-   //    clearInterval(this.timerRight);
-   //    this.timerRight = 0;
-   //    selectedItem.target.scrollLeft = position;
-   //    // this.scrollLeft(selectedItem);
-   //    // clearInterval()
-   //  }
-   //   if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
-   //     selectedItem.target.scrollLeft = selectedItem.target.scrollWidth-selectedItem.target.clientWidth;
-   //     this.scrollRight(selectedItem);
-   //     clearInterval(this.timerLeft);
-   //     console.log('reached right end onScroll');
-   // }
-   // if (selectedItem.target.scrollLeft <= 0) {
-   //   selectedItem.target.scrollLeft = 0;
-   //   this.scrollLeft(selectedItem);
-   //   clearInterval(this.timerRight);
-   //   console.log('reached left end onScroll');
-   // }
-   // if (!scrollCheck) {
-   //   this.scrollLeft(selectedItem)
-   //
-   // }
+
 }
 },
   mounted: // ~~this only runs once at the start of the page load. downstream events are then handled by onScroll
@@ -297,12 +244,7 @@ export default {
      // console.log('mounted scroll');
      let content2 =  document.getElementById('other-skills1');
   this.timerRight = setInterval(() => {
-    // if (this.pauseScroll) {
-    //   // console.log('pauseScroll is true');
-    //   void(0);
-    // }
-    // else {
-    // // if this.onScroll({ target: { scrollLeft, clientWidth, scrollWidth }}) < 1 {
+
       content2.scrollLeft += 1;
       // console.log(content2.scrollHeight);
       if (content2.scrollLeft+content2.clientWidth>=content2.scrollWidth) {
@@ -310,14 +252,10 @@ export default {
         clearInterval(this.timerRight);
         return;
       }
-    // }
-  // }
+
 }, 5)
 },
-  // function() { //~~ old scroll right on start - did not have right behavior when combined with css smooth scroll-behavior
-  //   let content2 =  document.getElementById('other-skills1');
-  //   content2.scrollTo(500,0);
-  // },
+
 
 data() {
   return {
@@ -355,40 +293,12 @@ beforeUnmount() {
   /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
   /* color: aqua; */
   font-size: 250%;
+  margin-bottom: 3px;
+  /* margin: 0; */
 }
 
 /* .resume-links { ~~ commenting out the formatting here so I can use in App.vue and reuse the format across the site
 
-  display: inline-flex;
-
-  vertical-align: middle;
-  text-align: center;
-
-}
-
-.resume-link {
-  padding: 0 20px;
-
-}
-
-  .link-button {
-    color: #0000FF;
-    background-color: rgb(240,240,240);
-
-    border: 1px solid rgba(27, 31, 35, .15);
-    border-radius: 7px;
-    cursor: pointer;
-    vertical-align: middle;
-
-    font-size: 15px;
-    padding: 5px 10px;
-
-  }
-
-  .link-button:hover {
-    background-color: #4CAF50;
-    color: white;
-    transition: 0.15s linear all;
   } */
 
   .skill-header1 {
@@ -496,6 +406,7 @@ h1 {
   /* display: block; */
   padding-left: 15px;
   padding-right: 15px;
+  text-align: left;
   /* display: inline-block; */
 }
 .skills, .skill-item, .skill-logo-photo {

@@ -30,7 +30,8 @@
 		<ul class="slider-menu">
       <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
       <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;">About Me</router-link></li>
-      <li><router-link to="/Resume" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
+      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
+      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
 		</ul>
 	</div>
 </div>
@@ -250,16 +251,20 @@ a:visited { /* ~~ router links count as a links so this gets rid of the visited 
   .link-button {
     color: #0000FF;
     /* font-weight: bold; */
-    background-color: rgb(240,240,240);
+    /* background-color: rgb(240,240,240); */
+    background-color: inherit;
 
     /* box-shadow: rgba(27, 31, 35, .1) 2px 2px 0; */
-    border: 1px solid rgba(27, 31, 35, .15);
+    /* border: 1px solid rgba(27, 31, 35, .15); */
+    border: none;
     border-radius: 7px;
     cursor: pointer;
     vertical-align: middle;
 
     font-size: 15px;
-    padding: 5px 10px;
+    padding: 5px;
+    height: 40px;
+    width: 40px;
 
   }
 
