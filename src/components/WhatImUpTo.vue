@@ -1,13 +1,15 @@
 <template>
   <div class="stack-small">
-    <div v-if="link" class="to-do-list-item-with-link"> <!-- check if a link is there or not -->
+    <!-- <h1>hi</h1> -->
+    <label class="upto-date">{{date}}</label>
+    <div v-if="link" class="to-do-list-item to-do-list-item-with-link"> <!-- check if a link is there or not -->
       <a href={{link}} target="_blank">
-        <label class="checkbox-label">{{label}}</label>
+        <label class="upto-label">{{label}}</label>
       </a>
     </div>
-    <div v-else class="to-do-list-item-without-link">
+    <div v-else class="to-do-list-item to-do-list-item-without-link">
       <a>
-        <label class="checkbox-label">{{label}}</label>
+        <label class="upto-label">{{label}}</label>
       </a>
     </div>
   </div>
@@ -22,7 +24,8 @@
     // },
     props: {
       label: { required: true, type: String },
-      link: { required: false, type: String}
+      link: { required: false, type: String},
+      date: {required: false, type: String},
     },
   //   data() {
   //     return {
@@ -36,6 +39,18 @@
 </script>
 
 <style scoped>
+.stack-small {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  /* margin: auto; */
+}
 
+.to-do-list-item {
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  vertical-align: middle;
+}
 
 </style>

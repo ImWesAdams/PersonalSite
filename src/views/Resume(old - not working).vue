@@ -1,3 +1,4 @@
+<!-- ~~ I was trying to get automatic AND manual scrolling to co-exist but couldn't get it to work :-/ back to automatic only -->
 <!-- Link to LinkedIn. Link to download Resume PDF. -->
 <!-- What do you get with me?
 
@@ -199,45 +200,147 @@ Reliably informs corporate and product strategy.
 
 // import handleClick from '@/main.js';
 export default {
+  scrollRight(selectedItem) {
   methods: {
+      this.timerRight = setInterval(() => {
+           selectedItem.target.scrollLeft -= 1;
+      }, 5)
+    },
+    scrollLeft(selectedItem) {
+      this.timerLeft = setInterval(() => {
+           selectedItem.target.scrollLeft += 1;
+      }, 5)
+    },
     onScroll(selectedItem) {
       // let content2 = selectedItem.target;
       // console.log(content2.scrollLeft);
     // onScroll ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
     //   let content2 =  document.getElementById('other-skills1');
+    var scrollCheck = 1;
+    var position = 0;
+    if (this.pauseScroll) {
+      position = selectedItem.target.scrollLeft;
+      scrollCheck = 0;
+      console.log(position);
+      clearInterval(this.timerLeft);
+      this.timerLeft = 0;
+      clearInterval(this.timerRight);
+      this.timerRight = 0;
+      selectedItem.target.scrollLeft = position;
+      // this.scrollLeft(selectedItem);
+      // clearInterval()
+    }
      if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
-       clearInterval(this.timerRight);
-      console.log('reached right end onScroll');
-      this.timerLeft = setInterval(() => {
-        if (this.pauseScroll) {
-          // console.log('pauseScroll is true');
-          void(0);
-        }
-         else {selectedItem.target.scrollLeft -= 1;
-         }
-      }, 5)
+       selectedItem.target.scrollLeft = selectedItem.target.scrollWidth-selectedItem.target.clientWidth;
+       this.scrollRight(selectedItem);
+       clearInterval(this.timerLeft);
+       console.log('reached right end onScroll');
    }
    if (selectedItem.target.scrollLeft <= 0) {
-     clearInterval(this.timerLeft);
+     selectedItem.target.scrollLeft = 0;
+     this.scrollLeft(selectedItem);
+     clearInterval(this.timerRight);
      console.log('reached left end onScroll');
-     this.timerRight = setInterval(() => {
-       if (this.pauseScroll) {
-         // console.log('pauseScroll is true');
-         void(0);
-       }
-        else {   selectedItem.target.scrollLeft += 1;
-        }
-      }, 5)
-}
+   }
+   if (!scrollCheck) {
+     this.scrollLeft(selectedItem)
+
+   }
 }
 },
+//   scrollBack ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
+//     if (scrollLeft + clientWidth >= scrollWidth) {
+//       console.log('reached right end');
+//     // this.timer = setInterval(() => {
+//     //   // console.log('test');
+//     //   // let content = document.querySelector(".other-skills");
+//     //   // content.scrollLeft -= 50;
+//     //   let content2 =  document.getElementById('other-skills1');
+//     //   // if (this.onScroll()>0) {
+//     //   content2.scrollLeft -= 3*10;
+//     //   console.log(window.innerWidth);
+//     //   // console.log(this.onScroll);
+//     // // }
+//     //   // content2.addEventListener('scroll', console.log('scrolling'));
+//     //   // console.log(content2);
+//     // }, 5)
+//    }
+//   }
+// },
+//     if (!this.timerRight
+//             && !this.timerLeft) {
+//               console.log('user dragged bar to both ends');
+//               if (this.pauseScroll) {
+//                 // console.log('pauseScroll is true');
+//                 void(0);
+//                 clearInterval(this.timerRight);
+//                 clearInterval(this.timerLeft);
+//                 console.log('user dragged bar to both ends');
+//               }
+//               this.timerLeft = setInterval(() => {
+//                    selectedItem.target.scrollLeft -= 1;
+//                  }, 5)
+//             }
+//      if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
+//        clearInterval(this.timerRight);
+//       console.log('reached right end onScroll');
+//       this.timerLeft = setInterval(() => {
+//         if (this.pauseScroll) {
+//           // console.log('pauseScroll is true');
+//           void(0);
+//           clearInterval(this.timerLeft);
+//           this.timerLeft=0;
+//           // selectedItem.target.scrollLeft = 1;
+//         }
+//          else {
+//            selectedItem.target.scrollLeft -= 1;
+//          }
+//       }, 5)
+//    }
+//    if (selectedItem.target.scrollLeft <= 0) {
+//      clearInterval(this.timerLeft);
+//      console.log('reached left end onScroll');
+//      this.timerRight = setInterval(() => {
+//        if (this.pauseScroll) {
+//          // console.log('pauseScroll is true');
+//          void(0);
+//          clearInterval(this.timerRight);
+//          this.timerRight=0;
+//        }
+//         else {
+//           selectedItem.target.scrollLeft += 1;
+//         }
+//       }, 5)
+// }
+// }
+// },
+// //   scrollBack ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
+// //     if (scrollLeft + clientWidth >= scrollWidth) {
+// //       console.log('reached right end');
+// //     // this.timer = setInterval(() => {
+// //     //   // console.log('test');
+// //     //   // let content = document.querySelector(".other-skills");
+// //     //   // content.scrollLeft -= 50;
+// //     //   let content2 =  document.getElementById('other-skills1');
+// //     //   // if (this.onScroll()>0) {
+// //     //   content2.scrollLeft -= 3*10;
+// //     //   console.log(window.innerWidth);
+// //     //   // console.log(this.onScroll);
+// //     // // }
+// //     //   // content2.addEventListener('scroll', console.log('scrolling'));
+// //     //   // console.log(content2);
+// //     // }, 5)
+// //    }
+// //   }
+// // },
   mounted: // ~~this only runs once at the start of the page load. downstream events are then handled by onScroll
    function scrollOnStart () { // ~~scroll right on startup
      let content2 =  document.getElementById('other-skills1');
   this.timerRight = setInterval(() => {
     if (this.pauseScroll) {
       // console.log('pauseScroll is true');
-      void(0);
+      clearInterval(this.timerRight);
+      return;
     }
     else {
     // if this.onScroll({ target: { scrollLeft, clientWidth, scrollWidth }}) < 1 {
@@ -273,10 +376,30 @@ beforeUnmount() {
 <style scoped>
 
 
-::-webkit-scrollbar { /* hide scroll bar to avoid the jittery manual scroll problem */
-    width: 0px;
-    height: 0px;
+/* ::-webkit-scrollbar { ~~ standardizing scroll bar format in App.vue so not needed here
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 13px;
   }
+
+
+::-webkit-scrollbar-track {
+  background: var(--lightestgrey);
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 15px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
 
 .all {
   margin-left: 10vw;
