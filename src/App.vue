@@ -1,4 +1,5 @@
 <template>
+  <div id="all-background">
   <!-- <div id="wrapper">
     <div id="header">
       <div id="left-header">
@@ -23,18 +24,18 @@
    -->
 		<h1 class="name">
       <!-- <a href="/">Wes Adams</a> -->
-      <router-link to="/" class="name-link" style="font-weight:bold; text-decoration:none; color:inherit; border-style: solid;
-      ">Wes Adams</router-link>
+      <router-link to="/" class="name-link" style=" text-decoration:none; color:inherit;">Wes Adams</router-link>
     </h1>
     <!-- </div> -->
 		<ul class="slider-menu">
-      <li><router-link to="/" class = "router" style="font-weight:normal; text-decoration:none;">Home</router-link></li>
-      <li><router-link to="/AboutMe" class = "router" style="font-weight:normal; text-decoration:none;">About Me</router-link></li>
-      <li><router-link to="/Resume" class = "router" style="font-weight:normal; text-decoration:none;">Resume and Skills</router-link></li>
+      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
+      <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;">About Me</router-link></li>
+      <li><router-link to="/Resume" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
 		</ul>
 	</div>
 </div>
 <router-view></router-view>
+</div>
 </template>
 
 <script>
@@ -51,30 +52,50 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans'); */
 
 #app {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
+  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 
+
+/* #all-background {
+  border: 500px solid gray;
+} */
+
+/* #all-background {
+  background-color: gray;
+  width: 100vw;
+  height: 100vh;
+} */
+
 @import url('https://fonts.googleapis.com/css?family=Parisienne|Quicksand&display=swap');
 
 .container {
 	height: 100%;
+  /* width: 150%; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-  padding-bottom: 5px;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  /* margin: -5% -9999rem 0 -9999rem; /*~~ this stuff would expand the header off the screen to make it full of color, but nah not aesthetic
+  padding: 6% 9999rem 1% 9999rem;
+  background-image: linear-gradient(to bottom right, lightgray, white);
+  background-color: lightgray; */
+  /* margin: 0 auto; */
+  /* padding: 0; */
 }
 
 .header-bar {
 	position: relative;
-	width: 50%;
+	width: 65%;
 	min-width: 300px;
 	height: 50px;
   pointer-events: none;
@@ -96,17 +117,34 @@ export default {
 	/* border-right: 10px solid #fffa; */
 	transition: 0.3s linear all;
 }
+
 .header-bar > .name {
 	position: absolute;
-	top: calc(50% - 20px);
+	top: calc(50% - 18px);
 	left: 10px;
 	transform: translateY(-50%);
 	/* color: #fffc; */
 	font-family: 'Parisienne', cursive;
+  font-weight: bold;
 	cursor: default;
 	user-select: none;
   pointer-events: all;
+  padding: 0 3px;
+  /* box-shadow: 2px 2px 2px 2px rgba(38, 97, 156, 0.25); */
+  border-width: 1px;
+  /* border-style: none none ridge none; */
+  /* border-width: 1px; */
+  /* border-color: blue; */
+  color: royalblue;
+  text-align: center;
+  align-content: center;
+  font-size: 150%;
 }
+
+/* .header-bar > .name:hover {
+  border-width: 3px;
+  transition: 0.1s linear all;
+} */
 
 /* .header-bar > .name > a {
 	position: absolute;
@@ -141,6 +179,9 @@ export default {
 .slider-menu > li:hover {
 	/* color: #faa; */
 	box-shadow: 0 50px 5px rgba(15, 10, 222, 0.15) inset;
+  /* color: #0000FF; */
+  font-weight: bold;
+  /* font-size: 110%; */
 }
 
 /* #header {
@@ -189,4 +230,69 @@ a:visited { /* ~~ router links count as a links so this gets rid of the visited 
 .container .name.router-link-exact-active {
   color: #2c3e50;
 }
+
+.resume-links {
+
+  display: inline-flex;
+
+  vertical-align: middle;
+  text-align: center;
+  /* padding: 10px; */
+
+}
+
+.resume-link {
+  /* padding: 10%; */
+  padding: 0 20px;
+
+}
+
+  .link-button {
+    color: #0000FF;
+    /* font-weight: bold; */
+    background-color: rgb(240,240,240);
+
+    /* box-shadow: rgba(27, 31, 35, .1) 2px 2px 0; */
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 7px;
+    cursor: pointer;
+    vertical-align: middle;
+
+    font-size: 15px;
+    padding: 5px 10px;
+
+  }
+
+  .link-button:hover {
+    background-color: #4CAF50;
+    color: white;
+    transition: 0.15s linear all;
+    /* font-weight: bold; */
+  }
+
+  ::-webkit-scrollbar {
+    /* display: inline; */
+  }
+  /* ~~ OLD - scrollbar formatting */
+  ::-webkit-scrollbar {
+      width: 10px;
+      height: 13px;
+    }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--lightestgrey);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 15px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 </style>

@@ -1,53 +1,94 @@
 <!-- The homepage to the site -->
 
 <template>
-  <div class="home">
-    <div class="headshot-photo center">
-      <img alt="Photo of Wes" src="../assets/wes_headshot_photo.jpeg">
+  <div class="all">
+    <div class="header">
+      <div class="headshot-photo center">
+        <img alt="Photo of Wes" src="../assets/wes_headshot_photo.jpeg">
+      </div>
+      <!-- <HomeHeader class="home-header" header1="Welcome to Wes' Website!" header2="&uarr; Wow, that's a lot of W's &uarr;">
+      </HomeHeader> -->
+      <div class="text-header">
+          <h1 id="welcome-header1">Welcome to Wes' Website!</h1>
+          <h2 id="welcome-header2">&uarr; Wow, that's a lot of W's &uarr;</h2>
+      </div>
     </div>
-    <HomeHeader class="home-header" header1="Welcome to Wes' Website!" header2="&uarr; Wow, that's a lot of W's &uarr;">
-    </HomeHeader>
-    <div class="short-about">
-      <h2 class="short-about-header">A little about me</h2>
-      <h2>I am a data scientist and analyst with a broad range of experiences. <br class="short-about-break">
-        My biggest passion is to improve user outcomes by applying targeted, in-product Machine Learning models. <br class="short-about-break">
-        I also enjoy providing general analysis and reporting that helps to improve the data culture of a company.
-      </h2>
-    </div>
-    <div class="list">
-      <h2 class="up-to">What have I been working on recently?</h2>
-      <ul aria-labelledby="list-summary" class="up-to-list">
-        <li v-for="item in WhatImUpToItems" :key="item.id" class="up-to-item">
-          <div v-if="item.link === ''">
-            <WhatImUpTo :link="asd" :label="item.label"></WhatImUpTo>
+        <div class="short-about">
+          <!-- <h2 class="short-about-header">Who am I?</h2> -->
+          <h2 class ="short-about-text">I'm a &#x1F522;<strong>Data Scientist</strong>&#x1f9ee; and &#x1F5A5;<strong>Overall Nerd</strong>&#x1F913; with a passion for learning.
+          <!-- </h2> -->
+          <!-- <h2 class ="short-about-text">  -->
+             I work with anything involving Data, especially analyzing, processing, streamlining, modeling, and productizing.
+           <!-- </h2> -->
+          <!-- <h2 class ="short-about-text">  -->
+             Outside of work, I mostly exercise, code, cook, watch sports, and read.
+           </h2>
+        </div>
+        <div class="resume-links">
+          <div class="resume-link">
+            <a href="https://google.com" target="_blank">
+              <button class = "link-button">
+                <!-- <label class = "link"> -->
+                  LinkedIn
+                <!-- </label> -->
+              </button>
+            </a>
           </div>
-          <div v-else>
-            <WhatImUpTo :link="item.link" :label="item.label"></WhatImUpTo>
+          <div class="resume-link">
+            <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
+              <a href="resume.pdf" target="_blank">
+                <button class = "link-button">
+                  <!-- <label class = "link"> -->
+                    Resume
+                  <!-- </label> -->
+                </button>
+            </a>
           </div>
-        </li>
-      </ul>
-    </div>
+          <div class="resume-link">
+            <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
+              <a href="github-link-goes-here" target="_blank">
+                 <button class = "link-button">
+                   <!-- <label class = "link"> -->
+                   GitHub
+                   <!-- </label> -->
+                 </button>
+              </a>
+          </div>
+        </div>
+          <h2 class="up-to">What have I been working on recently?</h2>
+        <div class="list">
+          <ul aria-labelledby="list-summary" class="up-to-list">
+            <li v-for="item in WhatImUpToItems" :key="item.id" class="up-to-item">
+              <div v-if="item.link === ''">
+                <WhatImUpTo :link="asd" :label="item.label" :date="item.date"></WhatImUpTo>
+              </div>
+              <div v-else>
+                <WhatImUpTo :link="item.link" :label="item.label" :date="item.date"></WhatImUpTo>
+              </div>
+            </li>
+          </ul>
+        </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-import HomeHeader from '@/components/HomeHeader.vue';
+
+// import HomeHeader from '@/components/HomeHeader.vue';
 import WhatImUpTo from '@/components/WhatImUpTo.vue';
 
 export default {
   name: 'Home',
   components: {
-    HomeHeader,
+    // HomeHeader,
     WhatImUpTo
   },
   data() {
     return {
       WhatImUpToItems: [
         // Leave link empty with '' if no link and the site will not display this item as a link :-)
-        { link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: '', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
       ]
     }
   }
@@ -55,6 +96,31 @@ export default {
 </script>
 
 <style scoped>
+
+h1 {
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  /* text-decoration-color: grey; */
+}
+#welcome-header2 {
+  margin: 0;
+  padding: 0 0px 10px 0;
+  font-size: 20px;
+}
+
+.all {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  text-align: center;
+}
+
+.list {
+  max-height: 1000px;
+  overflow: scroll;
+}
+
 .headshot-photo {
   /* make the headshot photo rounded to cut out clutter */
   width: 250px;
@@ -74,18 +140,21 @@ export default {
 }
 .short-about {
   font-size: 15px;
-  margin-bottom: 20px;
-  border:1px solid black;
-  padding: 5px;
+  /* margin-bottom: 20px; */
+  /* border:1px solid black; */
+  padding: 5px 0;
+  /* display: flex; */
 }
-.short-about-break {
-  margin: 20px;
+.short-about-text {
+  /* padding: 0; */
+  /* display: flex; */
   /* This doesn't actually seem to work right */
 }
 .short-about-header {
   font-weight: bold;
   text-decoration: underline;
   text-decoration-thickness: 3px;
+  /* display: flex; */
   /* margin-top: 20px; */
   /* text-align: left; */
 }
@@ -109,8 +178,11 @@ export default {
   margin: 10px;
   text-decoration: underline;
   text-decoration-thickness: 3px;
+  font-weight: bold;
 }
+
 h2 {
+  padding: 0;
   margin: 0;
 }
 
