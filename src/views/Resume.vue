@@ -92,7 +92,8 @@ Reliably informs corporate and product strategy.
           </h2>
         </div>
         <h2 class="other-skills-header">and more...</h2>
-        <div class="other-skills" id="other-skills1" @scroll="onScroll($event)" @mousedown="pauseScroll = true" @mouseup="pauseScroll = false">
+        <div class="other-skills" id="other-skills1"
+                      @scroll="onScroll($event)" @mousedown="pauseScroll($event), pauseScrollTag=true" @mouseup="resumeScroll($event), pauseScrollTag=false">
           <figure>
             <img alt="Excel" class="other-skill-logo-photo" src="../assets/Microsoft_Office_Excel_(2019–present).svg.png">
             <figcaption>Excel</figcaption>
@@ -200,56 +201,117 @@ Reliably informs corporate and product strategy.
 // import handleClick from '@/main.js';
 export default {
   methods: {
-    onScroll(selectedItem) {
-      // let content2 = selectedItem.target;
-      // console.log(content2.scrollLeft);
-    // onScroll ({ target: { scrollLeft, clientWidth, scrollWidth }}) {
-    //   let content2 =  document.getElementById('other-skills1');
-     if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
-       clearInterval(this.timerRight);
-      console.log('reached right end onScroll');
+      scrollRight(selectedItem) {
+        this.directionScroll = 'left';
+        // console.log(this.directionScroll);
+      this.timerRight = setInterval(() => {
+           selectedItem.target.scrollLeft -= 1;
+      }, 5)
+    },
+    scrollLeft(selectedItem) {
+      this.directionScroll = 'right';
+      // console.log(this.directionScroll);
       this.timerLeft = setInterval(() => {
-        if (this.pauseScroll) {
-          // console.log('pauseScroll is true');
-          void(0);
-        }
-         else {selectedItem.target.scrollLeft -= 1;
-         }
+           selectedItem.target.scrollLeft += 1;
       }, 5)
-   }
-   if (selectedItem.target.scrollLeft <= 0) {
-     clearInterval(this.timerLeft);
-     console.log('reached left end onScroll');
-     this.timerRight = setInterval(() => {
-       if (this.pauseScroll) {
-         // console.log('pauseScroll is true');
-         void(0);
-       }
-        else {   selectedItem.target.scrollLeft += 1;
+    },
+    pauseScroll(selectedItem) {
+      clearInterval(this.timerRight);
+      clearInterval(this.timerLeft);
+      this.timerRight=0;
+      this.timerLeft=0;
+      void(selectedItem);
+      // console.log('scrolling paused');
+      // console.log(selectedItem.target.scrollLeft);
+    },
+    resumeScroll(selectedItem) {
+      // console.log(this.directionScroll);
+      // console.log('resume scroll activated');
+      if (this.directionScroll == 'right') {
+        this.scrollLeft(selectedItem);
+        console.log('scrolling right from resume');
+      }
+      else {
+        this.scrollRight(selectedItem);
+      }
+    },
+    onScroll(selectedItem) {
+      if(this.pauseScrollTag) {
+        clearInterval(this.timerLeft);
+        clearInterval(this.timerRight);
+        if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
+            this.directionScroll='left';
+          }
+          if (selectedItem.target.scrollLeft <=0) {
+              this.directionScroll='right';
+            }
+        return
         }
-      }, 5)
-}
+
+
+      if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
+        clearInterval(this.timerLeft);
+        // console.log('reached right end scroll');
+        this.scrollRight(selectedItem);
+      }
+
+      if (selectedItem.target.scrollLeft <= 0) {
+        clearInterval(this.timerRight);
+        // console.log('reached left end scroll');
+        this.scrollLeft(selectedItem);
+      }
+    // var scrollCheck = 1;
+    // var position = 0;
+   //  if (this.pauseScroll) {
+   //    position = selectedItem.target.scrollLeft;
+   //    scrollCheck = 0;
+   //    console.log(position);
+   //    clearInterval(this.timerLeft);
+   //    this.timerLeft = 0;
+   //    clearInterval(this.timerRight);
+   //    this.timerRight = 0;
+   //    selectedItem.target.scrollLeft = position;
+   //    // this.scrollLeft(selectedItem);
+   //    // clearInterval()
+   //  }
+   //   if (selectedItem.target.scrollLeft + selectedItem.target.clientWidth >= selectedItem.target.scrollWidth) {
+   //     selectedItem.target.scrollLeft = selectedItem.target.scrollWidth-selectedItem.target.clientWidth;
+   //     this.scrollRight(selectedItem);
+   //     clearInterval(this.timerLeft);
+   //     console.log('reached right end onScroll');
+   // }
+   // if (selectedItem.target.scrollLeft <= 0) {
+   //   selectedItem.target.scrollLeft = 0;
+   //   this.scrollLeft(selectedItem);
+   //   clearInterval(this.timerRight);
+   //   console.log('reached left end onScroll');
+   // }
+   // if (!scrollCheck) {
+   //   this.scrollLeft(selectedItem)
+   //
+   // }
 }
 },
   mounted: // ~~this only runs once at the start of the page load. downstream events are then handled by onScroll
    function scrollOnStart () { // ~~scroll right on startup
+     // console.log('mounted scroll');
      let content2 =  document.getElementById('other-skills1');
   this.timerRight = setInterval(() => {
-    if (this.pauseScroll) {
-      // console.log('pauseScroll is true');
-      void(0);
-    }
-    else {
-    // if this.onScroll({ target: { scrollLeft, clientWidth, scrollWidth }}) < 1 {
+    // if (this.pauseScroll) {
+    //   // console.log('pauseScroll is true');
+    //   void(0);
+    // }
+    // else {
+    // // if this.onScroll({ target: { scrollLeft, clientWidth, scrollWidth }}) < 1 {
       content2.scrollLeft += 1;
       // console.log(content2.scrollHeight);
       if (content2.scrollLeft+content2.clientWidth>=content2.scrollWidth) {
-        console.log('reached right end mounted');
+        // console.log('reached right end mounted');
         clearInterval(this.timerRight);
         return;
       }
     // }
-  }
+  // }
 }, 5)
 },
   // function() { //~~ old scroll right on start - did not have right behavior when combined with css smooth scroll-behavior
@@ -260,7 +322,8 @@ export default {
 data() {
   return {
     timer: null,
-    pauseScroll: false
+    pauseScrollTag: false,
+    directionScroll: 'right',
   }
 },
 
@@ -272,11 +335,11 @@ beforeUnmount() {
 
 <style scoped>
 
-
-::-webkit-scrollbar { /* hide scroll bar to avoid the jittery manual scroll problem */
+/* ~~ hide scroll bar to avoid the jittery manual scroll problem */
+/* ::-webkit-scrollbar {
     width: 0px;
     height: 0px;
-  }
+  } */
 
 .all {
   margin-left: 10vw;
@@ -358,6 +421,7 @@ beforeUnmount() {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* pointer-events: none; */
 
   margin: 0;
 
@@ -419,6 +483,12 @@ h1 {
     /* align-items: center; */
     /* margin: 10px 10px 15px 150px; */
 }
+
+.other-skills > figure {
+      pointer-events: none;
+      /* ~~ ^make it so that you can't interact with the photos so the scrolling feature is never lost */
+}
+
 .skill-description {
   /* float: middle; */
   /* display: flex; */

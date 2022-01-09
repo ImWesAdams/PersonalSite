@@ -200,8 +200,8 @@ Reliably informs corporate and product strategy.
 
 // import handleClick from '@/main.js';
 export default {
-  scrollRight(selectedItem) {
   methods: {
+      scrollRight(selectedItem) {
       this.timerRight = setInterval(() => {
            selectedItem.target.scrollLeft -= 1;
       }, 5)
