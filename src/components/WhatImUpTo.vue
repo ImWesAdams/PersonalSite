@@ -21,16 +21,18 @@
 
   export default {
     // components: {
+    //   test: 'hi',
     // },
     props: {
       label: { required: true, type: String },
       link: { required: false, type: String},
       date: {required: true, type: String},
     },
-  //   data() {
-  //     return {
-  //     };
-  //   },
+    data() {
+      return {
+        test: 'hi',
+      };
+    },
   //   methods: {
   // },
   // computed: {

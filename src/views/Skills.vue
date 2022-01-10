@@ -266,7 +266,11 @@ data() {
 },
 
 beforeUnmount() {
-  clearInterval(this.timer)
+  // console.log('yo');
+  // this.pauseScroll(document.getElementById('other-skills1'));
+  this.pauseScrollTag=true; // ~~this stops the setInterval loop from running when page is changed away :)
+  // clearInterval(this.timerLeft);
+  // clearInterval(this.timerRight);
 }
 };
 </script>

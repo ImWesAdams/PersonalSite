@@ -28,25 +28,54 @@
     </h1>
     <!-- </div> -->
 		<ul class="slider-menu">
-      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
-      <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;">About Me</router-link></li>
-      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
-      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
+      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Home</router-link></li>
+      <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">About Me</router-link></li>
+      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Skills</router-link></li>
+      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Resume</a></li>
 		</ul>
 	</div>
 </div>
+<!-- <router-view :key="$route.fullPath"></router-view> -->
 <router-view></router-view>
 </div>
 </template>
 
 <script>
 
+// import firstHomeLoad from './main.js';
+
+// import { provide } from 'vue';
+// import { createApp } from 'vue';
+// var firstHomeLoad = true;
+
 export default {
   name: 'app',
+  // setup() {
+  //   provide('firstHomeLoad',true)
+  // },
   components: {
   },
   data() {
+    return {
+    }
   },
+  // inject: ['firstHomeLoad','globalVariable'],
+  methods: {
+    onlyAnimateOnce() {
+      console.log('onlyAnimateOnce');
+    },
+  },
+  // watch: {
+  //   '$route' (to, from) {
+  //     console.log('Route changed from ' + from.path + ' to ' + to.path);
+  //       console.log('watch app - homeAnimationShow = ' + localStorage.getItem('homeAnimationShow'));
+  //       // this.getTasks();
+  //     }
+// },
+mounted() {
+  localStorage.setItem('homeAnimationShow',1);
+  // console.log('mounted app - homeAnimationShow = ' + localStorage.getItem('homeAnimationShow'));
+}
 }
 
 </script>
@@ -241,39 +270,6 @@ a:visited { /* ~~ router links count as a links so this gets rid of the visited 
   /* padding: 10px; */
 
 }
-
-.resume-link {
-  /* padding: 10%; */
-  padding: 0 20px;
-
-}
-
-  .link-button {
-    color: #0000FF;
-    /* font-weight: bold; */
-    /* background-color: rgb(240,240,240); */
-    background-color: inherit;
-
-    /* box-shadow: rgba(27, 31, 35, .1) 2px 2px 0; */
-    /* border: 1px solid rgba(27, 31, 35, .15); */
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    vertical-align: middle;
-
-    font-size: 15px;
-    padding: 5px;
-    height: 40px;
-    width: 40px;
-
-  }
-
-  .link-button:hover {
-    background-color: #4CAF50;
-    color: white;
-    transition: 0.15s linear all;
-    /* font-weight: bold; */
-  }
 
   ::-webkit-scrollbar {
     /* display: inline; */

@@ -34,7 +34,7 @@ img {
 
 .resume-link {
   /* padding: 10%; */
-  padding: 0 10px;
+  padding: 0 3px;
 
 }
 
