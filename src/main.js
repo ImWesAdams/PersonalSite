@@ -13,9 +13,9 @@ import router from './router'
 
 createApp(App).use(router).mount('#app');
 
-const app = createApp(App);
-var firstHomeLoad = true;
-app.provide('$firstHomeLoad', firstHomeLoad);
+// const app = createApp(App);
+// var firstHomeLoad = true;
+// app.provide('$firstHomeLoad', firstHomeLoad);
 
 // let app=new Vue({
 // provide:{

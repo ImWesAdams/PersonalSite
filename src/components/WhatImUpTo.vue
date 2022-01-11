@@ -1,53 +1,67 @@
 <template>
-  <div class="stack-small">
+  <div class="upto-all">
+    <ul>
     <!-- <h1>hi</h1> -->
-    <label class="upto-date">{{date}}</label>
-    <div v-if="link" class="to-do-list-item to-do-list-item-with-link"> <!-- check if a link is there or not -->
-      <a href={{link}} target="_blank">
-        <label class="upto-label">{{label}}</label>
-      </a>
-    </div>
-    <div v-else class="to-do-list-item to-do-list-item-without-link">
-      <a>
-        <label class="upto-label">{{label}}</label>
-      </a>
-    </div>
+      <li>
+        <label class="upto-date">Feb. 2022</label>
+        <div class="to-do-list-item to-do-list-item-with-link"> <!-- check if a link is there or not -->
+          <a href='python-fda-github' target="_blank" class = "upto-label-link">
+            Analyzing FDA Food Data in Python
+          </a>
+        </div>
+      </li>
+      <li>
+        <label class="upto-date">Jan. 2022</label>
+        <div class="to-do-list-item to-do-list-item-with-link"> <!-- check if a link is there or not -->
+          <a href='vue-website-github' target="_blank" class = "upto-label-link">
+            Learning JavaScript, HTML, and CSS so I can make this website with Vue
+          </a>
+        </div>
+      </li>
+      <li>
+        <label class="upto-date">Dec. 2021</label>
+        <div class="to-do-list-item to-do-list-item-with-link"> <!-- check if a link is there or not -->
+          <a href='https://github.com/ImWesAdams/Coursera-Python-Data-Science' target="_blank" class = "upto-label-link">
+            Coursera class on Data Science in Python
+          </a>
+        </div>
+      </li>
+      <li>
+        <label class="upto-date">Dec. 2021</label>
+        <div class="to-do-list-item to-do-list-item-with-link"> <!-- check if a link is there or not -->
+          <a target="_blank" class = "upto-label-link">
+            Test No Link
+          </a>
+        </div>
+      </li>
+    </ul>
   </div>
-
 
 </template>
 
 <script>
 
   export default {
-    // components: {
-    //   test: 'hi',
-    // },
-    props: {
-      label: { required: true, type: String },
-      link: { required: false, type: String},
-      date: {required: true, type: String},
-    },
-    data() {
-      return {
-        test: 'hi',
-      };
-    },
-  //   methods: {
-  // },
-  // computed: {
-  // }
-}
+  }
 </script>
 
 <style scoped>
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+}
 
 .upto-date {
   min-width: 100px;
   /* font-weight: bold; */
 }
 
-.stack-small {
+.upto-all {
   display: flex;
   text-align: center;
   align-items: center;
@@ -60,5 +74,26 @@
   padding-right: 15px;
   vertical-align: middle;
 }
+
+.upto-label-link {
+  cursor: pointer;
+  /* color: blue; */
+  text-decoration: none;
+  color: #0000EE;
+}
+
+a:visited {
+  /* text-decoration: none; */
+  color: #551A8B;
+  /* font-size: 100px; */
+}
+
+.upto-label-link:hover {
+  color:royalblue;
+}
+
+/* a:visited {
+  color: inherit;
+} */
 
 </style>
