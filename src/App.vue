@@ -68,13 +68,13 @@ export default {
   // watch: {
   //   '$route' (to, from) {
   //     console.log('Route changed from ' + from.path + ' to ' + to.path);
-  //       console.log('watch app - homeAnimationShow = ' + localStorage.getItem('homeAnimationShow'));
+  //       console.log('watch app - homeAnimationShow = ' + sessionStorage.getItem('homeAnimationShow'));
   //       // this.getTasks();
   //     }
 // },
 mounted() {
-  localStorage.setItem('homeAnimationShow',1);
-  // console.log('mounted app - homeAnimationShow = ' + localStorage.getItem('homeAnimationShow'));
+  sessionStorage.setItem('homeAnimationShow',1);
+  // console.log('mounted app - homeAnimationShow = ' + sessionStorage.getItem('homeAnimationShow'));
 }
 }
 
@@ -198,18 +198,20 @@ mounted() {
 }
 .slider-menu > li {
 	display: inline-flex;
-	padding: 14px;
-	margin-left: 2px;
+	/* padding: 14px; */
+  margin: 14px;
+	/* padding: 14px; */
 	font-family: 'Quicksand', sans-serif;
 	/* color: #fff; */
 	cursor: pointer;
-	transition: 0.3s linear all;
+	/* transition: 0.3s linear all; */
 	user-select: none;
 }
 .slider-menu > li:hover {
 	/* color: #faa; */
-	box-shadow: 0 50px 5px rgba(15, 10, 222, 0.15) inset;
-  /* color: #0000FF; */
+	/* box-shadow: 0 50px 5px rgba(15, 10, 222, 0.15) inset; */
+  /* cursor: pointer; */
+  color: #0000FF;
   font-weight: bold;
   /* font-size: 110%; */
 }

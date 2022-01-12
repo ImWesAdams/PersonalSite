@@ -28,16 +28,18 @@
         <div class="home-body">
           <h2 class="up-to" v-bind:class="{ comeInFromBelow: firstLoad}">What have I been working on recently?</h2>
           <div class="up-to-list" v-bind:class="{ stretchIn: firstLoad}">
-            <ul aria-labelledby="list-summary" class="up-to-ul">
-              <li v-for="item in WhatImUpToItems" :key="item.id" class="up-to-item">
+            <WhatImUpTo></WhatImUpTo>
+            <!-- ~~ Originally was rendering this with a loop but couldn't get :visited behavior to work properly -->
+            <!-- <ul aria-labelledby="list-summary" class="up-to-ul">
+              <li v-for="item in WhatImUpToItems" :key="item.label" class="up-to-item">
                 <div v-if="item.link === ''">
-                  <WhatImUpTo :label="item.label" :date="item.date"></WhatImUpTo>
+                  <WhatImUpToOldList :label="item.label" :date="item.date" :clicked="0" @item-clicked="updateClickedStatus(item.label)"></WhatImUpToOldList>
                 </div>
                 <div v-else>
-                  <WhatImUpTo :link="item.link" :label="item.label" :date="item.date"></WhatImUpTo>
+                  <WhatImUpToOldList :link="item.link" :label="item.label" :date="item.date"></WhatImUpToOldList>
                 </div>
               </li>
-            </ul>
+            </ul> -->
         </div>
       </div>
   </div>
@@ -64,44 +66,27 @@ export default {
   // },
   data() {
     return {
-      // firstLoad: localStorage.getItem('homeAnimationShow'),
-      firstLoad: localStorage.getItem('homeAnimationShow')=='1', // ~~bruhhh this is so annoying!
-      // ~~the localstorage items are all converted to string, so the check was failing because 0 != '0'. so annoying.
+      // firstLoad: sessionStorage.getItem('homeAnimationShow'),
+      firstLoad: sessionStorage.getItem('homeAnimationShow')=='1', // ~~bruhhh this is so annoying!
+      // ~~the localstorage and sessionstorage items are all converted to string, so the check was failing because 0 != '0'. so annoying.
       // ~~glad I finally found it. DO LOTS OF CONSOLE.LOG() OF EVERY RELEVANT VALUE TO CATCH SOONER NEXT TIME!!!
-      WhatImUpToItems: [
-        // ~~ Leave link empty with '' if no link and the site will not display this item as a link :-)
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-        { date: 'Jan. 2022', link: 'test2', label: 'Analyzing FDA Food Data in Python'},
-        { date: 'Dec. 2021', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
-      ]
+
+      // ~~ OLD - used to render a list of WhatImUpToItems but couldn't get link visited behavior to work properly so screw it lol
+      // WhatImUpToItems: [
+      //   // ~~ Leave link empty with '' if no link and the site will not display this item as a link :-)
+      //   { date: 'Jan. 2022', link: 'python-fda-github', label: 'Analyzing FDA Food Data in Python'},
+      //   { date: 'Dec. 2021', link: 'vue-website-github', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+      //   { date: 'Jan. 2021', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science', label: 'Coursera class on Data Science in Python'},
+      //   { date: 'Jan. 2021', label: 'Test No Link'}
+      // ]
     }
   },
   methods: {
+    updateClickedStatus(upToItem) {
+      const upToLinkClicked = this.ToDoItems.find(item => item.label === upToItem);
+      upToLinkClicked.clicked = "1";
+      console.log('test');
+    }
     // onlyAnimateOnce() {
     //   console.log('test');
     //   this.firstLoad = false;
@@ -112,7 +97,7 @@ export default {
   // },
   beforeUnmount() {
     // location.reload();
-    localStorage.setItem('homeAnimationShow',0);
+    sessionStorage.setItem('homeAnimationShow',0);
     // console.log('beforeUnmount home - firstLoad = ' + this.firstLoad);
   },
   // beforeUnmount() {
@@ -122,7 +107,7 @@ export default {
   // watch: {
   //   '$route' (to, from) {
   //     console.log('Route changed from ' + from.path + ' to ' + to.path);
-  //     console.log('watch home - homeAnimationShow = ' + localStorage.getItem('homeAnimationShow'));
+  //     console.log('watch home - homeAnimationShow = ' + sessionStorage.getItem('homeAnimationShow'));
   //     console.log('watch home - firstLoad = ' + this.firstLoad);
   //     console.log(this.firstLoad);
   //     console.log(this.firstLoadTest);
@@ -130,7 +115,7 @@ export default {
   //     }
   //   },
   // mounted:
-  // this.firstLoad=localStorage.getItem('homeAnimationShow')
+  // this.firstLoad=sessionStorage.getItem('homeAnimationShow')
   //   function onlyAnimateOnce() {
   //     // this.firstLoad = !this.firstLoad;
   //     console.log(this.loadedBefore);
@@ -144,7 +129,7 @@ h1 {
   margin: 0;
   padding: 0;
   /* text-decoration: underline; */
-  text-decoration-thickness: 3px;
+  /* text-decoration-thickness: 3px; */
   /* text-decoration-color: grey; */
 }
 #welcome-header2 {
@@ -229,24 +214,22 @@ h1 {
 }
 
 .up-to-list {
-  height: 25vh;
-  overflow: scroll;
+  max-height: 25vh;
+  overflow-y: scroll;
+  /* overflow-x: scroll; */
   /* background-color: gray; */
   /* border-style: solid; */
   /* border-width: 1px; */
-  box-shadow: 1px 1px 1px 1px rgba(38, 97, 156, 0.25);
-  background-color: rgba(250,250,250,0.5);
+  border-style: solid;
+  /* box-shadow: 1px 1px 1px 1px rgba(38, 97, 156, 0.25); */
+  /* background-color: rgba(250,250,250,0.5); */
   margin: 0 5vw;
+  padding: 1px 0 3px 6px;
   /* display: flex; */
   /* flex-wrap: nowrap; */
   /* animation: move 3s infinite linear; */
 }
 
-
-.up-to-ul {
-  margin: 0;
-  padding: 0;
-}
 
 .headshot-photo {
   /* make the headshot photo rounded to cut out clutter */
@@ -284,18 +267,14 @@ h1 {
   /* This doesn't actually seem to work right */
 }
 
-.up-to-item {
-  font-size: 20px;
-  margin-bottom: 7px;
-}
-
 
 .up-to {
   /* margin-bottom: 0px; */
   padding-top: 2vh;
+  /* padding-bottom: 0; */
   margin: 10px;
   /* text-decoration: underline; */
-  text-decoration-thickness: 3px;
+  /* text-decoration-thickness: 3px; */
   font-weight: bold;
   /* position: absolute; */
 }
