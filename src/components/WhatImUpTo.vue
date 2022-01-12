@@ -28,6 +28,7 @@
       </li> -->
       <li v-for="upToItem in upToItems" :key="upToItem.link" class = "upto-list-item">
         <label class="upto-date">{{upToItem.date}}</label>
+        <label class="category">{{upToItem.category}}</label>
         <div class="upto-item"> <!-- check if a link is there or not with css href = '' below -->
           <a :key="upToItem.link" :href="upToItem.link">
             {{upToItem.name}}
@@ -47,10 +48,10 @@
 
         upToItems: [
           // Don't include a link field and it will show as black text rather than formatted as link
-          {date: 'Feb. 2022', name: 'Test No Link'},
-          {date: 'Feb. 2022', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
-          {date: 'Jan. 2022', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'link-to-site'},
-          {date: 'Dec. 2021', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
+          {date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
+          {date: 'Feb. 2022', category: 'Data', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
+          {date: 'Jan. 2022', category: 'Web', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'link-to-site'},
+          {date: 'Dec. 2021', category: 'Data', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
         ],
       }
   }
@@ -70,12 +71,26 @@ li {
 
 .upto-date {
   min-width: 100px;
+  padding: 0 5px;
+  /* vertical-align: middle; */
+  /* position: relative; */
+  /* text-align: center; */
+  /* font-weight: bold; */
+}
+
+.category {
+  min-width: 100px;
+  padding: 0 5px;
+  font-style: italic;
+  /* text-align: center; */
   /* font-weight: bold; */
 }
 
 .upto-list-item {
   /* margin: 4px 0; */
   font-size: 20px;
+  text-align: center;
+  /* vertical-align: middle; */
 }
 
 .upto-all {
@@ -84,6 +99,8 @@ li {
   align-items: center;
   margin: none;
   padding: none;
+  /* text-align:justify; */
+  /* vertical-align: middle; */
 }
 
 .upto-label-link {
