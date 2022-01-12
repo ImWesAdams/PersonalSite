@@ -13,7 +13,7 @@
           <h2 id="welcome-header2">&uarr; Wow, that's a lot of W's &uarr;</h2>
       </div>
     </div>
-        <div class="short-about" v-bind:class="{comeInFromBelow: firstLoad}">
+        <div class="short-about" v-bind:class="{blurryToClear: firstLoad}">
           <!-- <h2 class="short-about-header">Who am I?</h2> -->
           <h2 class ="short-about-text">I'm a &#x1F522;<strong>Data Scientist</strong>&#x1f9ee; and &#x1F5A5;<strong>Overall Nerd</strong>&#x1F913; with a passion for learning.
           <!-- </h2> -->
@@ -42,7 +42,7 @@
             </ul> -->
         </div>
         <h2 class="up-to" v-bind:class="{ comeInFromRight: firstLoad}">Interested in some Recommendations?</h2>
-        <div class="up-to-list" v-bind:class="{ stretchIn: firstLoad }">
+        <div class="up-to-list" v-bind:class="{ comeInFromBelow: firstLoad }">
           <Recommendations></Recommendations>
         </div>
       </div>
@@ -144,6 +144,10 @@ h1 {
   font-size: 20px;
 }
 
+.blurryToClear {
+  animation: blurryToClear 3s ease-out 1s;
+}
+
 .comeInFromAbove {
   animation: comeInFromAbove 3s ease-out 1s;
 }
@@ -166,6 +170,12 @@ h1 {
 
 .stretchIn {
   animation: stretchIn 3s ease-out 1s;
+}
+
+@keyframes blurryToClear {
+  from {
+    filter:blur(10px);
+  }
 }
 
 @keyframes comeInFromRight {
