@@ -1,59 +1,58 @@
 <template>
-  <div class="stack-small">
-    <!-- <h1>hi</h1> -->
-    <label class="upto-date">{{date}}</label>
-    <div v-if="link" class="to-do-list-item to-do-list-item-with-link"> <!-- check if a link is there or not -->
-      <a href={{link}} target="_blank" class = "upto-label-link" @click.prevent="$emit('item-clicked')">
-      <!-- <a href={{link}} target="_blank" class = "upto-label-link"> -->
-      <!-- <a href={{link}} target="_blank" class = "upto-label-link" @click.prevent="testFunc($event)"> -->
-        {{label}}
-      </a>
-    </div>
-    <div v-else class="to-do-list-item to-do-list-item-without-link">
-      <a class = "upto-label-nolink">
-        {{label}}
-      </a>
-    </div>
+  <div class="upto-all">
+    <ul class="menu">
+      <!-- <li v-for="item in WhatImUpToItems">
+        <a v-bind:href="asd">{{ item.date }}</a>
+      </li> -->
+    </ul>
   </div>
-
-
 </template>
 
 <script>
 
-  export default {
-    // components: {
-    //   test: 'hi',
-    // },
-    props: {
-      label: { required: true, type: String },
-      link: { required: false, type: String},
-      date: {required: true, type: String},
-      clicked: {required: false, type: String}
-    },
-    data() {
-      return {
-        test: 'hi',
-      };
-    },
-    methods: {
-      testFunc(asd) {
-        console.log(asd.target);
-      }
-  },
-  // computed: {
+  // export default {
+  //   data() return {
+      // WhatImUpToItems: [
+      // //   // ~~ Leave link empty with '' if no link and the site will not display this item as a link :-)
+      //   { date: 'Jan. 2022', link: 'python-fda-github', label: 'Analyzing FDA Food Data in Python'},
+      //   { date: 'Dec. 2021', link: 'vue-website-github', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+      //   { date: 'Jan. 2021', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science', label: 'Coursera class on Data Science in Python'},
+      //   { date: 'Jan. 2021', label: 'Test No Link'}
+      // ]
+  //   }
   // }
+export default {
+  data() {
+    return {
+      WhatImUpToItems: [
+      //   // ~~ Leave link empty with '' if no link and the site will not display this item as a link :-)
+        { date: 'Jan. 2022', link: 'python-fda-github', label: 'Analyzing FDA Food Data in Python'},
+        { date: 'Dec. 2021', link: 'vue-website-github', label: 'Learning JavaScript, HTML, and CSS so I can make this website with Vue!'},
+        { date: 'Jan. 2021', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science', label: 'Coursera class on Data Science in Python'},
+        { date: 'Jan. 2021', label: 'Test No Link'}
+      ],
+    }
 }
+}
+;
 </script>
-
 <style scoped>
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+}
 
 .upto-date {
   min-width: 100px;
   /* font-weight: bold; */
 }
 
-.stack-small {
+.upto-all {
   display: flex;
   text-align: center;
   align-items: center;
@@ -74,10 +73,10 @@
   color: #0000EE;
 }
 
-.to-do-list-item > a:visited {
+a:visited {
   /* text-decoration: none; */
-  /* color: #0000EE;*/
-  font-size: 100px;
+  color: #551A8B;
+  /* font-size: 100px; */
 }
 
 .upto-label-link:hover {

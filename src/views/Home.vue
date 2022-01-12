@@ -31,12 +31,12 @@
             <WhatImUpTo></WhatImUpTo>
             <!-- ~~ Originally was rendering this with a loop but couldn't get :visited behavior to work properly -->
             <!-- <ul aria-labelledby="list-summary" class="up-to-ul">
-              <li v-for="item in WhatImUpToItems" :key="item.id" class="up-to-item">
+              <li v-for="item in WhatImUpToItems" :key="item.label" class="up-to-item">
                 <div v-if="item.link === ''">
-                  <WhatImUpTo :label="item.label" :date="item.date" :clicked="0" @item-clicked="updateClickedStatus(item.label)"></WhatImUpTo>
+                  <WhatImUpToOldList :label="item.label" :date="item.date" :clicked="0" @item-clicked="updateClickedStatus(item.label)"></WhatImUpToOldList>
                 </div>
                 <div v-else>
-                  <WhatImUpTo :link="item.link" :label="item.label" :date="item.date"></WhatImUpTo>
+                  <WhatImUpToOldList :link="item.link" :label="item.label" :date="item.date"></WhatImUpToOldList>
                 </div>
               </li>
             </ul> -->
@@ -129,7 +129,7 @@ h1 {
   margin: 0;
   padding: 0;
   /* text-decoration: underline; */
-  text-decoration-thickness: 3px;
+  /* text-decoration-thickness: 3px; */
   /* text-decoration-color: grey; */
 }
 #welcome-header2 {
@@ -215,7 +215,8 @@ h1 {
 
 .up-to-list {
   max-height: 25vh;
-  overflow: scroll;
+  overflow-y: scroll;
+  /* overflow-x: scroll; */
   /* background-color: gray; */
   /* border-style: solid; */
   /* border-width: 1px; */
@@ -223,16 +224,12 @@ h1 {
   /* box-shadow: 1px 1px 1px 1px rgba(38, 97, 156, 0.25); */
   /* background-color: rgba(250,250,250,0.5); */
   margin: 0 5vw;
+  padding: 1px 0 3px 6px;
   /* display: flex; */
   /* flex-wrap: nowrap; */
   /* animation: move 3s infinite linear; */
 }
 
-
-.up-to-ul {
-  margin: 0;
-  padding: 0;
-}
 
 .headshot-photo {
   /* make the headshot photo rounded to cut out clutter */
@@ -270,18 +267,14 @@ h1 {
   /* This doesn't actually seem to work right */
 }
 
-.up-to-item {
-  font-size: 20px;
-  margin: 4px 0;
-}
-
 
 .up-to {
   /* margin-bottom: 0px; */
   padding-top: 2vh;
+  /* padding-bottom: 0; */
   margin: 10px;
   /* text-decoration: underline; */
-  text-decoration-thickness: 3px;
+  /* text-decoration-thickness: 3px; */
   font-weight: bold;
   /* position: absolute; */
 }
