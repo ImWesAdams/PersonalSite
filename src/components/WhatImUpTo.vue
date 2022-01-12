@@ -70,6 +70,7 @@ li {
 
 .upto-date {
   min-width: 100px;
+  padding: 0 5px;
   /* font-weight: bold; */
 }
 

@@ -13,7 +13,7 @@
           <h2 id="welcome-header2">&uarr; Wow, that's a lot of W's &uarr;</h2>
       </div>
     </div>
-        <div class="short-about" v-bind:class="{comeInFromLeft: firstLoad}">
+        <div class="short-about" v-bind:class="{comeInFromBelow: firstLoad}">
           <!-- <h2 class="short-about-header">Who am I?</h2> -->
           <h2 class ="short-about-text">I'm a &#x1F522;<strong>Data Scientist</strong>&#x1f9ee; and &#x1F5A5;<strong>Overall Nerd</strong>&#x1F913; with a passion for learning.
           <!-- </h2> -->
@@ -24,9 +24,9 @@
              Outside of work, I mostly exercise, code, cook, watch sports, and read.
            </h2>
         </div>
-        <div class="externalLinks" v-bind:class="{ comeInFromRight: firstLoad}"><ExternalLinks></ExternalLinks></div>
+        <div class="externalLinks" v-bind:class="{ comeInFromAbove: firstLoad}"><ExternalLinks></ExternalLinks></div>
         <div class="home-body">
-          <h2 class="up-to" v-bind:class="{ comeInFromBelow: firstLoad}">What have I been working on recently?</h2>
+          <h2 class="up-to" v-bind:class="{ comeInFromLeft: firstLoad}">What have I been working on recently?</h2>
           <div class="up-to-list" v-bind:class="{ stretchIn: firstLoad}">
             <WhatImUpTo></WhatImUpTo>
             <!-- ~~ Originally was rendering this with a loop but couldn't get :visited behavior to work properly -->
@@ -41,6 +41,10 @@
               </li>
             </ul> -->
         </div>
+        <h2 class="up-to" v-bind:class="{ comeInFromRight: firstLoad}">Interested in some Recommendations?</h2>
+        <div class="up-to-list" v-bind:class="{ stretchIn: firstLoad }">
+          <Recommendations></Recommendations>
+        </div>
       </div>
   </div>
 </template>
@@ -50,6 +54,7 @@
 
 // import HomeHeader from '@/components/HomeHeader.vue';
 import WhatImUpTo from '@/components/WhatImUpTo.vue';
+import Recommendations from '@/components/Recommendations.vue';
 import ExternalLinks from '@/components/ExternalLinks.vue';
 // import {provide} from 'vue';
 // import { inject } from 'vue';
@@ -60,6 +65,7 @@ export default {
     // HomeHeader,
     WhatImUpTo,
     ExternalLinks,
+    Recommendations
   },
   // mounted() {
   //   location.reload()
@@ -138,6 +144,10 @@ h1 {
   font-size: 20px;
 }
 
+.comeInFromAbove {
+  animation: comeInFromAbove 3s ease-out 1s;
+}
+
 .comeInFromRight {
   animation: comeInFromRight 3s ease-out 1s;
 }
@@ -194,6 +204,15 @@ h1 {
 @keyframes comeInFromBelow {
   from {
     transform: translateY(25vh);
+  }
+  to {
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes comeInFromAbove {
+  from {
+    transform: translateY(-25vh);
   }
   to {
     transform: translateY(0vh);
