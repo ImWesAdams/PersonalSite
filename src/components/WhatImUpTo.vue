@@ -1,4 +1,12 @@
 <template>
+  <div class = "upto-item-filters">
+    <span v-for="category in uniqueCategories2" :key="category" class="upto-item-filter">
+        <div class="checkbox-div">
+            <input type="checkbox" :value="category" v-model="checkedCategories2" @change="filterCategories" :id="category">
+            <label :for="category">{{category}}</label>
+      </div>
+  </span>
+  </div>
   <div class="upto-all">
     <ul>
     <!-- <h1>hi</h1> -->
@@ -26,7 +34,7 @@
           </a>
         </div>
       </li> -->
-      <li v-for="upToItem in upToItems" :key="upToItem.link" class = "upto-list-item">
+      <li v-for="upToItem in upToItemsFiltered2" :key="upToItem.link" class = "upto-list-item">
         <label class="upto-date">{{upToItem.date}}</label>
         <label class="category">{{upToItem.category}}</label>
         <div class="upto-item"> <!-- check if a link is there or not with css href = '' below -->
@@ -45,7 +53,7 @@
   export default {
     data() {
       return {
-
+        checkedCategories2: [],
         upToItems: [
           // Don't include a link field and it will show as black text rather than formatted as link
           {date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
@@ -54,7 +62,44 @@
           {date: 'Dec. 2021', category: 'Data', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
         ],
       }
-  }
+  },
+  computed: {
+    upToItemsFiltered2() {
+      // return this.upToItems.filter(function(item) {
+      //   return item.category.indexOf(item.category) >= 0;
+      if (this.checkedCategories2.length == 0) {
+        return this.upToItems;
+      }
+      else {
+        // return this.checkedCategories;
+        return this.upToItems.filter(upToItem => this.checkedCategories2.includes(upToItem.category));
+      }
+    //   else {
+    //     return this.upToItems.filter(function(item) {
+    //     return item.category.indexOf(this.checkedCategories) >= 0;
+    //   })
+    // }
+     // return this.jobs.filter(job => this.checkedUserIds.includes(job.userId))
+    },
+    uniqueCategories2() {
+      // return [...new Set(this.upToItems.category.map(x => x.item.Name))];
+      var output = [];
+      var keys   = [];
+
+      this.upToItems.forEach(function (post) {
+          var key = post['category'];
+
+          if (keys.indexOf(key) === -1) {
+              keys.push(key);
+              output.push(key);
+          }
+      });
+
+      return output;
+      // return [this.upToItems.category];
+      // console.log(this.upToItems.category);
+    }
+  },
 }
 </script>
 
@@ -67,6 +112,41 @@ ul {
 
 li {
   display: flex;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+
+input[type="checkbox"] + label {
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+input[type="checkbox"]:hover + label:hover {
+  /* font-weight: bold; */
+  color: gray;
+  /* transition: 0.15s linear all; */
+  /* font-weight: bold; */
+}
+
+input[type="checkbox"]:checked + label {
+  color: green;
+  font-style: italic;
+  /* background-color: green; */
+  /* box-shadow: 3px orange; */
+  /* font-size: 100px; */
+  /* margin: 100px */
+}
+
+.upto-item-filters {
+  /* background-color: rgb(250,250,250); */
+  /* border-bottom-style: solid; */
+  /* border-width: 1px; */
+  display: flex;
+  justify-content: center;
 }
 
 .upto-date {

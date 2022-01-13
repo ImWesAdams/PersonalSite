@@ -243,7 +243,7 @@ h1 {
 }
 
 .up-to-list {
-  max-height: 25vh;
+  height: 25vh;
   overflow-y: scroll;
   /* overflow-x: scroll; */
   /* background-color: gray; */
@@ -254,6 +254,8 @@ h1 {
   /* background-color: rgba(250,250,250,0.5); */
   margin: 0 5vw;
   padding: 1px 0 3px 6px;
+  align-self: flex-start;
+  /* position: fixed; */
   /* display: flex; */
   /* flex-wrap: nowrap; */
   /* animation: move 3s infinite linear; */

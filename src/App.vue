@@ -28,10 +28,14 @@
     </h1>
     <!-- </div> -->
 		<ul class="slider-menu">
-      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Home</router-link></li>
+      <!-- <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Home</router-link></li>
       <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">About Me</router-link></li>
       <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Skills</router-link></li>
-      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Resume</a></li>
+      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Resume</a></li> -->
+      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
+      <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;">About Me</router-link></li>
+      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
+      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
 		</ul>
 	</div>
 </div>
@@ -61,9 +65,9 @@ export default {
   },
   // inject: ['firstHomeLoad','globalVariable'],
   methods: {
-    onlyAnimateOnce() {
-      console.log('onlyAnimateOnce');
-    },
+    // onlyAnimateOnce() {
+    //   console.log('onlyAnimateOnce');
+    // },
   },
   // watch: {
   //   '$route' (to, from) {
