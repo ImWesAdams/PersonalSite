@@ -11,16 +11,22 @@
     <ul class = "upto-items">
         <!-- I'm cheating and reusing the formatting from my WhatImUpTo component without renaming everything :-) -->
       <!-- <li v-for="upToItem in upToItems" :key="upToItem.link" class = "upto-list-item"> -->
-      <li v-for="upToItem in upToItemsFiltered" :key="upToItem.link" class = "upto-list-item" @mouseover="showByIndex = upToItem" @mouseout="showByIndex = null">
+      <li v-for="upToItem in upToItemsFiltered" :key="upToItem.link" class = "upto-list-item">
         <label class="upto-date">{{upToItem.date}}</label>
         <label class="category">{{upToItem.category}}</label>
-        <div class="upto-item"> <!-- check if a link is there or not with css href = '' below -->
-          <a :key="upToItem.link" :href="upToItem.link">
-            {{upToItem.name}}
-          </a>
+        <div class="upto-item">
+        <transition name="fade">
+        <div class="description-hover" v-if="showByIndex === upToItem">
+            <a :key="upToItem.link" :href="upToItem.link">{{upToItem.description}}</a>
         </div>
-        <div class="child-two" v-show="showByIndex === upToItem">
-            {{upToItem.description}}
+      </transition>
+      <transition name="fade">
+      <div class="upto-item-name" v-if="showByIndex!=upToItem">
+        <a :key="upToItem.link" :href="upToItem.link">
+          {{upToItem.name}}
+        </a>
+      </div>
+    </transition>
         </div>
       </li>
     </ul>
@@ -39,7 +45,7 @@
           // Don't include a link field and it will show as black text rather than formatted as link
           {date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
           {date: 'Jan. 2022', category: 'Music', name: 'Ram by Paul McCartney', description: 'Maybe the first Indie album ever?', link: 'https://music.youtube.com/playlist?list=OLAK5uy_lAB-UgnvLAy8sIC2U65IX5eRSnBeNyFqU'},
-          {date: 'Jan. 2022', category: 'Book', name: 'The Death and Life of Great American Cities by Jane Jacobs', description: 'A book about cities and how "urban planning" can hurt them', link: 'https://www.goodreads.com/book/show/30833.The_Death_and_Life_of_Great_American_Cities'},
+          {date: 'Jan. 2022', category: 'Book', name: 'The Death and Life of Great American Cities by Jane Jacobs', description: 'A book about cities and how "urban planning" can hurt them.', link: 'https://www.goodreads.com/book/show/30833.The_Death_and_Life_of_Great_American_Cities'},
           {date: 'Jan. 2022', category: 'Music', name: 'You Will Never Know Why by Sweet Trip', description: 'Shoegaze, IDM, Dream Pop. Overall ear candy!', link: 'https://music.youtube.com/playlist?list=OLAK5uy_mibyq2bJnpGxzf66jcgVdt7Dps6tUEZn8'},
           {date: 'Dec. 2021', category: 'TV', name: 'Seinfeld', description: "It's just funny!", link: 'https://www.imdb.com/title/tt0098904/'},
         ],
@@ -92,6 +98,15 @@
 
 <style scoped>
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  /* opacity: 0; */
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -105,6 +120,21 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.description-hover {
+  /* transition: 1s; */
+  position: absolute;
+  /* bottom: 0; */
+  /* right: 2vw; */
+  /* font-size: 1white; */
+  /* margin-left: 25vw; */
+  font-style: italic;
+  text-decoration: none;
+  /* margin-right: */
+  /* animation: ease-in 1s; */
+  /* text-align: right; */
+  /* margin-left:  */
+  background-color: white;
+}
 
 input[type="checkbox"] + label {
   cursor: pointer;

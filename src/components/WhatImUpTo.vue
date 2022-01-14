@@ -1,3 +1,5 @@
+<!-- ~~ https://stackoverflow.com/questions/52020624/smooth-vue-collapse-transition-on-v-if Vue2 example on handling transitions with JS functions -->
+
 <template>
   <div class = "upto-item-filters">
     <span v-for="category in uniqueCategories2" :key="category" class="upto-item-filter">
@@ -34,15 +36,29 @@
           </a>
         </div>
       </li> -->
-      <li v-for="upToItem in upToItemsFiltered2" :key="upToItem.link" class = "upto-list-item">
+      <div v-for="upToItem in upToItems" :key="upToItem.link" class = "upto-list-item">
+        <transition name="fadeQuick">
+      <li v-if="upToItemsFiltered2.includes(upToItem)" :key="upToItem.link" class = "upto-list-item">
+        <!-- <div v-if="upToItemsFiltered2.includes(upToItem)"> -->
         <label class="upto-date">{{upToItem.date}}</label>
         <label class="category">{{upToItem.category}}</label>
-        <div class="upto-item"> <!-- check if a link is there or not with css href = '' below -->
-          <a :key="upToItem.link" :href="upToItem.link">
-            {{upToItem.name}}
-          </a>
+        <div class="upto-item" @mouseover="showByIndex = upToItem" @mouseout="showByIndex = null">
+        <transition name="fade">
+        <div class="description-hover" v-if="showByIndex === upToItem">
+            <a :key="upToItem.link" :href="upToItem.link">{{upToItem.description}}</a>
+        </div>
+      </transition>
+      <transition name="fade">
+      <div class="upto-item-name" v-if="showByIndex!=upToItem">
+        <a :key="upToItem.link" :href="upToItem.link">
+          {{upToItem.name}}
+        </a>
+      </div>
+    </transition>
         </div>
       </li>
+    </transition>
+    </div>
     </ul>
   </div>
 
@@ -53,13 +69,14 @@
   export default {
     data() {
       return {
+        showByIndex: null,
         checkedCategories2: [],
         upToItems: [
           // Don't include a link field and it will show as black text rather than formatted as link
           {date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
-          {date: 'Feb. 2022', category: 'Data', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
-          {date: 'Jan. 2022', category: 'Web', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'link-to-site'},
-          {date: 'Dec. 2021', category: 'Data', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
+          {date: 'Feb. 2022', category: 'Data', description: 'Checking out nutrition data of foods that were analyzed by the FDA.', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
+          {date: 'Jan. 2022', category: 'Web', description: 'You can check out the code that made this website in my GitHub!', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'link-to-site'},
+          {date: 'Dec. 2021', category: 'Data', description: 'Re-hashing some data skills and gaining some new ones from Coursera.', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
         ],
       }
   },
@@ -105,6 +122,34 @@
 
 <style scoped>
 
+@keyframes shrink {
+  to {
+    transform: scale(0)
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  /* height: 200px; */
+  /* opacity: 0; */
+}
+
+.fadeQuick-enter-active, .fadeQuick-leave-active {
+  /* animation: shrink; */
+  transition: all 0.5s ease;
+}
+
+.fadeQuick-enter-from, .fadeQuick-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: rotateX(90deg);
+  /* max-height: 0px;
+  width: 200px; */
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -116,6 +161,26 @@ li {
 
 input[type="checkbox"] {
   cursor: pointer;
+}
+
+.upto-item {
+  /* display: flex; */
+}
+
+.description-hover {
+  /* transition: 1s; */
+  position: absolute;
+  /* bottom: 0; */
+  /* right: 2vw; */
+  /* font-size: 1white; */
+  /* margin-left: 25vw; */
+  font-style: italic;
+  text-decoration: none;
+  /* margin-right: */
+  /* animation: ease-in 1s; */
+  /* text-align: right; */
+  /* margin-left:  */
+  background-color: white;
 }
 
 
