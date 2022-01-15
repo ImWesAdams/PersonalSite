@@ -12,7 +12,7 @@
       </div>
     </div>
         <div class="short-about" v-bind:class="{blurryToClear: firstLoad}">
-          <h2 class ="short-about-text">I'm a &#x1F522;<strong>Data Scientist</strong>&#x1f9ee; and &#x1F5A5;<strong>Overall Nerd</strong>&#x1F913; with a passion for learning.
+          <h2 class ="short-about-text">I'm a &#x1F522;<strong>Data Analyst and Scientist</strong>&#x1f9ee; and &#x1F5A5;<strong>Overall Nerd</strong>&#x1F913; with a passion for learning.
              I work with anything involving Data, especially analyzing, processing, streamlining, modeling, and productizing.
              Outside of work, I mostly exercise, code, cook, watch sports, and read.
            </h2>
