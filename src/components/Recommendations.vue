@@ -20,12 +20,12 @@
         <div class="upto-item" @mouseover="showByIndex = upToItem" @mouseout="showByIndex = null">
         <transition name="fade">
         <div class="description-hover" v-if="showByIndex === upToItem">
-            <a :key="upToItem.link" :href="upToItem.link">{{upToItem.description}}</a>
+            <a :key="upToItem.link" :href="upToItem.link" target="_blank">{{upToItem.description}}</a>
         </div>
       </transition>
       <transition name="fade">
       <div class="upto-item-name" v-if="showByIndex!=upToItem">
-        <a :key="upToItem.id" :href="upToItem.link">
+        <a :key="upToItem.id" :href="upToItem.link" target="_blank">
           {{upToItem.name}}
         </a>
       </div>
@@ -95,6 +95,28 @@ import uniqueId from 'lodash';
   to {
     transform: scale(0)
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+  /* height: 200px; */
+  /* opacity: 0; */
+}
+
+.fadeQuick-enter-active, .fadeQuick-leave-active {
+  /* animation: shrink; */
+  transition: all 0.5s ease;
+}
+
+.fadeQuick-enter-from, .fadeQuick-leave-to  {
+  opacity: 0;
+  transform: rotateX(90deg);
+  /* max-height: 0px;
+  width: 200px; */
 }
 
 

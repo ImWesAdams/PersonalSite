@@ -21,12 +21,12 @@ with conditional classes instead -->
         <div class="upto-item" @mouseover="showByIndex = upToItem" @mouseout="showByIndex = null">
         <transition name="fade">
         <div class="description-hover" v-if="showByIndex === upToItem">
-            <a :key="upToItem.link" :href="upToItem.link">{{upToItem.description}}</a>
+            <a :key="upToItem.link" :href="upToItem.link" target="_blank">{{upToItem.description}}</a>
         </div>
       </transition>
       <transition name="fade">
       <div class="upto-item-name" v-if="showByIndex!=upToItem">
-        <a :key="upToItem.id" :href="upToItem.link">
+        <a :key="upToItem.id" :href="upToItem.link" target="_blank">
           {{upToItem.name}}
         </a>
       </div>
@@ -55,7 +55,7 @@ import uniqueId from 'lodash';
           // Don't include a link field and it will show as black text rather than formatted as link
           // {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
           {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data', description: 'Checking out nutrition data of foods that were analyzed by the FDA.', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
-          {id: uniqueId('upto-'), date: 'Jan. 2022', category: 'Web', description: 'You can check out the code that made this website in my GitHub!', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'link-to-site'},
+          {id: uniqueId('upto-'), date: 'Jan. 2022', category: 'Web', description: 'You can check out the code that made this website in my GitHub!', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'https://github.com/ImWesAdams/PersonalSite'},
           {id: uniqueId('upto-'), date: 'Dec. 2021', category: 'Data', description: 'Re-hashing some data skills and gaining some new ones from Coursera.', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
         ],
       }
