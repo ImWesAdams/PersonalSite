@@ -1,6 +1,7 @@
 <!-- The homepage to the site -->
 
 <template>
+  <!-- <header>TESTING</header> -->
   <div class="all">
     <div class="header" v-bind:class="{ fadeIn: firstLoad}">
       <div class="headshot-photo center">
@@ -98,9 +99,6 @@ export default {
     //   this.firstLoad = false;
     // },
   },
-  // mounted() {
-  //   console.log('mounted home - firstLoad = ' + this.firstLoad);
-  // },
   beforeUnmount() {
     // location.reload();
     sessionStorage.setItem('homeAnimationShow',0);
@@ -130,6 +128,22 @@ export default {
 </script>
 
 <style scoped>
+/*
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+header {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+
+  background: #333;
+  padding: 30px;
+} */
 
 h1 {
   margin: 0;
@@ -145,31 +159,31 @@ h1 {
 }
 
 .blurryToClear {
-  animation: blurryToClear 3s ease-out 1s;
+  animation: 3s ease-out 0s 1 blurryToClear;
 }
 
 .comeInFromAbove {
-  animation: comeInFromAbove 3s ease-out 1s;
+  animation: 3s ease-out 0s 1 comeInFromAbove;
 }
 
 .comeInFromRight {
-  animation: comeInFromRight 3s ease-out 1s;
+  animation: 3s ease-out 0s 1 comeInFromRight;
 }
 
 .comeInFromLeft {
-  animation: comeInFromLeft 3s ease-out 1s;
+  animation: 3s ease-out 0s 1 comeInFromLeft;
 }
 
 .fadeIn {
-  animation: fadeIn 3s ease-out 1s;
+  animation: 3s ease-out 0s 1 fadeIn;
 }
 
 .comeInFromBelow {
-  animation: comeInFromBelow 3s ease-out 1s;
+  animation: 3s ease-out 0s 1 comeInFromBelow;
 }
 
 .stretchIn {
-  animation: stretchIn 3s ease-out 1s;
+  animation: 3s ease-out 0s 1 stretchIn;
 }
 
 @keyframes blurryToClear {

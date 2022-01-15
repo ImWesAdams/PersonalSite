@@ -40,7 +40,10 @@
 	</div>
 </div>
 <!-- <router-view :key="$route.fullPath"></router-view> -->
+<!-- <transition name="fade"> -->
 <router-view></router-view>
+<!-- </transition> -->
+<div class="bottom-buffer"></div>
 </div>
 </template>
 
@@ -86,6 +89,13 @@ mounted() {
 
 <style>
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 /* @import url('https://fonts.googleapis.com/css?family=Open+Sans'); */
 
 #app {
@@ -109,6 +119,10 @@ mounted() {
 } */
 
 @import url('https://fonts.googleapis.com/css?family=Parisienne|Quicksand&display=swap');
+
+.bottom-buffer {
+  padding: 3vh;
+}
 
 .container {
 	height: 100%;
