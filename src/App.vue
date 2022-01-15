@@ -33,7 +33,7 @@
       <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Skills</router-link></li>
       <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Resume</a></li> -->
       <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
-      <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;">About Me</router-link></li>
+      <!-- <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;">About Me</router-link></li> -->
       <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
       <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
 		</ul>

@@ -205,7 +205,7 @@ export default {
       // console.log('resume scroll activated');
       if (this.directionScroll == 'right') {
         this.scrollLeft(selectedItem);
-        console.log('scrolling right from resume');
+        // console.log('scrolling right from resume');
       }
       else {
         this.scrollRight(selectedItem);

@@ -2,10 +2,12 @@
 
 <template>
   <div class = "upto-item-filters">
-    <span v-for="category in uniqueCategories2" :key="category" class="upto-item-filter">
+    <span v-for="category in uniqueCategories" :key="category+'upto'" class="upto-item-filter">
+      <!-- Ok I figured out the problem that was causing duplicate filters - the label :for field needs a unique input field to attach to or else it attaches to the first -->
         <div class="checkbox-div">
-            <input type="checkbox" :value="category" v-model="checkedCategories2" @change="filterCategories" :id="category">
-            <label :for="category">{{category}}</label>
+            <!-- <input type="checkbox" :value="category" v-model="checkedCategories" @change="filterCategories" :id="category+'reco'"> -->
+            <input type="checkbox" :value="category" v-model="checkedCategories" :id="category+'upto'">
+            <label :for="category+'upto'">{{category}}</label>
       </div>
   </span>
   </div>
@@ -36,9 +38,9 @@
           </a>
         </div>
       </li> -->
-      <div v-for="upToItem in upToItems" :key="upToItem.link" class = "upto-list-item">
+      <div v-for="upToItem in upToItems" :key="upToItem.id" class = "upto-list-item">
         <transition name="fadeQuick">
-      <li v-if="upToItemsFiltered2.includes(upToItem)" :key="upToItem.link" class = "upto-list-item">
+      <li v-if="upToItemsFiltered2.includes(upToItem)" :key="upToItem.id" class = "upto-list-item">
         <!-- <div v-if="upToItemsFiltered2.includes(upToItem)"> -->
         <label class="upto-date">{{upToItem.date}}</label>
         <label class="category">{{upToItem.category}}</label>
@@ -50,7 +52,7 @@
       </transition>
       <transition name="fade">
       <div class="upto-item-name" v-if="showByIndex!=upToItem">
-        <a :key="upToItem.link" :href="upToItem.link">
+        <a :key="upToItem.id" :href="upToItem.link">
           {{upToItem.name}}
         </a>
       </div>
@@ -66,17 +68,24 @@
 
 <script>
 
+import uniqueId from 'lodash';
+
   export default {
+    methods: {
+    //   filterCategories() {
+    //   console.log(this.checkedCategories);
+    // }
+    },
     data() {
       return {
         showByIndex: null,
-        checkedCategories2: [],
+        checkedCategories: [],
         upToItems: [
           // Don't include a link field and it will show as black text rather than formatted as link
-          {date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
-          {date: 'Feb. 2022', category: 'Data', description: 'Checking out nutrition data of foods that were analyzed by the FDA.', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
-          {date: 'Jan. 2022', category: 'Web', description: 'You can check out the code that made this website in my GitHub!', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'link-to-site'},
-          {date: 'Dec. 2021', category: 'Data', description: 'Re-hashing some data skills and gaining some new ones from Coursera.', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
+          {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
+          {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data', description: 'Checking out nutrition data of foods that were analyzed by the FDA.', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
+          {id: uniqueId('upto-'), date: 'Jan. 2022', category: 'Web', description: 'You can check out the code that made this website in my GitHub!', name: 'Practicing JavaScript, HTML, and CSS to make this website in Vue', link: 'link-to-site'},
+          {id: uniqueId('upto-'), date: 'Dec. 2021', category: 'Data', description: 'Re-hashing some data skills and gaining some new ones from Coursera.', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
         ],
       }
   },
@@ -84,12 +93,12 @@
     upToItemsFiltered2() {
       // return this.upToItems.filter(function(item) {
       //   return item.category.indexOf(item.category) >= 0;
-      if (this.checkedCategories2.length == 0) {
+      if (this.checkedCategories.length == 0) {
         return this.upToItems;
       }
       else {
         // return this.checkedCategories;
-        return this.upToItems.filter(upToItem => this.checkedCategories2.includes(upToItem.category));
+        return this.upToItems.filter(upToItem => this.checkedCategories.includes(upToItem.category));
       }
     //   else {
     //     return this.upToItems.filter(function(item) {
@@ -98,7 +107,7 @@
     // }
      // return this.jobs.filter(job => this.checkedUserIds.includes(job.userId))
     },
-    uniqueCategories2() {
+    uniqueCategories() {
       // return [...new Set(this.upToItems.category.map(x => x.item.Name))];
       var output = [];
       var keys   = [];
