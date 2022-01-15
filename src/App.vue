@@ -1,87 +1,41 @@
 <template>
   <div id="all-background">
-  <!-- <div id="wrapper">
-    <div id="header">
-      <div id="left-header">
-        <router-link to="/" style = "text-decoration:none; color:inherit;" id = "name">Wes Adams</router-link>
-      </div>
-      <nav id="nav-items">
-        <ul>
-        <li><router-link to="/" class = "router" style="font-weight:normal; text-decoration:none;">Home</router-link></li>
-        <li><router-link to="/AboutMe" class = "router" style="font-weight:normal; text-decoration:none;">About Me</router-link></li>
-        <li><router-link to="/Resume" class = "router" style="font-weight:normal; text-decoration:none;">Resume and Skills</router-link></li>
-        </ul>
-      </nav>
-    </div>
-  </div> -->
-  <!-- ~~ I got the gorgeous header template from here: https://codepen.io/tacosontitan/pen/zYxXzKo -->
+  <!-- ~~ I started with a header template from here: https://codepen.io/tacosontitan/pen/zYxXzKo -->
   <div class="container">
 	<div class="header-bar">
-    <!-- <div class="name"> -->
-    <!-- ~~ the clickbox for this router is out of wack because of the translate-y.
+    <!-- ~~ the clickbox for this router was out of wack because of the translate-y.
       was thinking about fixing like this in style (display:inline-block; position:relative; z-index:1; padding-top:10em; margin-top:-10em;)
       in accordance with this thread (https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button)
    -->
 		<h1 class="name">
-      <!-- <a href="/">Wes Adams</a> -->
       <router-link to="/" class="name-link" style=" text-decoration:none; color:inherit;">Wes Adams</router-link>
     </h1>
-    <!-- </div> -->
 		<ul class="slider-menu">
-      <!-- <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Home</router-link></li>
-      <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">About Me</router-link></li>
-      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Skills</router-link></li>
-      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;" @click.once="onlyAnimateOnce">Resume</a></li> -->
-      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
-      <!-- <li><router-link to="/AboutMe" class = "router" style="font-weight:inherit; text-decoration:none;">About Me</router-link></li> -->
-      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
-      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
+      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none; color:inherit;">Home</router-link></li>
+      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none; color:inherit;">Skills</router-link></li>
+      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none; color:inherit;">Resume</a></li>
 		</ul>
 	</div>
 </div>
-<!-- <router-view :key="$route.fullPath"></router-view> -->
-<!-- <transition name="fade"> -->
 <router-view></router-view>
-<!-- </transition> -->
 <div class="bottom-buffer"></div>
 </div>
 </template>
 
 <script>
 
-// import firstHomeLoad from './main.js';
-
-// import { provide } from 'vue';
-// import { createApp } from 'vue';
-// var firstHomeLoad = true;
-
 export default {
   name: 'app',
-  // setup() {
-  //   provide('firstHomeLoad',true)
-  // },
   components: {
   },
   data() {
     return {
     }
   },
-  // inject: ['firstHomeLoad','globalVariable'],
   methods: {
-    // onlyAnimateOnce() {
-    //   console.log('onlyAnimateOnce');
-    // },
   },
-  // watch: {
-  //   '$route' (to, from) {
-  //     console.log('Route changed from ' + from.path + ' to ' + to.path);
-  //       console.log('watch app - homeAnimationShow = ' + sessionStorage.getItem('homeAnimationShow'));
-  //       // this.getTasks();
-  //     }
-// },
 mounted() {
   sessionStorage.setItem('homeAnimationShow',1);
-  // console.log('mounted app - homeAnimationShow = ' + sessionStorage.getItem('homeAnimationShow'));
 }
 }
 
@@ -89,14 +43,6 @@ mounted() {
 
 <style>
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s ease;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans'); */
 
 #app {
   /* font-family: "Open Sans", sans-serif; */
@@ -107,16 +53,6 @@ mounted() {
   color: #2c3e50;
 }
 
-
-/* #all-background {
-  border: 500px solid gray;
-} */
-
-/* #all-background {
-  background-color: gray;
-  width: 100vw;
-  height: 100vh;
-} */
 
 @import url('https://fonts.googleapis.com/css?family=Parisienne|Quicksand&display=swap');
 
@@ -189,20 +125,6 @@ mounted() {
   font-size: 150%;
 }
 
-/* .header-bar > .name:hover {
-  border-width: 3px;
-  transition: 0.1s linear all;
-} */
-
-/* .header-bar > .name > a {
-	position: absolute;
-	top: calc(50% - 20px);
-	left: 10px;
-	transform: translateY(-50%);
-	font-family: 'Parisienne', cursive;
-	cursor: default;
-	user-select: none;
-} */
 .slider-menu {
 	position: absolute;
 	top: 0;
@@ -233,37 +155,6 @@ mounted() {
   font-weight: bold;
   /* font-size: 110%; */
 }
-
-/* #header {
-  box-sizing: border-box;
-  background: #ffc301;
-  padding: 10px 15px;
-  display: table;
-  width: 100%;
-  height: 70px;
-}
-
-#wrapper {
-  height: 50px;
-}
-
-#left-header {
-  float: left;
-}
-
-#nav-items {
-  vertical-align: middle;
-  display: table-cell;
-}
-
-#nav-items ul {
-  text-align: center;
-}
-
-#nav-items ul li {
-  display: inline-block;
-  vertical-align: top;
-} */
 
 h2 {
   font-weight: normal;

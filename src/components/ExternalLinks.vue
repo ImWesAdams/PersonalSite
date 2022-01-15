@@ -3,9 +3,7 @@
     <div class="resume-link">
       <a href="https://www.linkedin.com/in/jameswesadams/" target="_blank">
         <button class = "link-button">
-          <!-- <label class = "link"> -->
             <img alt="LinkedIn" class="linkedIn-button" src="../assets/linkedin-logo.png">
-          <!-- </label> -->
         </button>
       </a>
     </div>
@@ -13,9 +11,7 @@
       <!-- A static, internal asset like a resume needs to be in the "public" folder to be referenced with href -->
         <a href="https://github.com/ImWesAdams" target="_blank">
            <button class = "link-button">
-             <!-- <label class = "link"> -->
              <img alt="GitHub" class="github-button" src="../assets/github-logo.png">
-             <!-- </label> -->
            </button>
         </a>
     </div>
@@ -63,10 +59,5 @@ img {
     transition: 0.15s linear all;
     /* font-weight: bold; */
   }
-
-  /* .resume-links {
-    padding: 0;
-    margin: 0;
-  } */
 
 </style>

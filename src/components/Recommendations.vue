@@ -1,11 +1,10 @@
-<!-- ~~ https://stackoverflow.com/questions/52020624/smooth-vue-collapse-transition-on-v-if Vue2 example on handling transitions with JS functions -->
+<!-- ~~ This is honestly a copy of the WhatImUpTo code because I liked the format of that component and wanted to reuse it for recommendations :-) -->
 
 <template>
   <div class = "upto-item-filters">
     <span v-for="category in uniqueCategories" :key="category+'reco'" class="upto-item-filter">
       <!-- Ok I figured out the problem that was causing duplicate filters - the label :for field needs a unique input field to attach to or else it attaches to the first -->
         <div class="checkbox-div">
-            <!-- <input type="checkbox" :value="category" v-model="checkedCategories" @change="filterCategories" :id="category+'reco'"> -->
             <input type="checkbox" :value="category" v-model="checkedCategories" :id="category+'reco'">
             <label :for="category+'reco'">{{category}}</label>
       </div>
@@ -13,35 +12,9 @@
   </div>
   <div class="upto-all">
     <ul>
-    <!-- <h1>hi</h1> -->
-      <!-- <li class = "upto-list-item">
-        <label class="upto-date">Feb. 2022</label>
-        <div class="upto-item upto-item-with-link">
-          <a href='python-fda-github' target="_blank" class = "upto-label-link">
-            Analyzing FDA Food Data in Python
-          </a>
-        </div>
-      </li>
-      <li class = "upto-list-item">
-        <label class="upto-date">Jan. 2022</label>
-        <div class="upto-item upto-item-with-link">
-          <a href='vue-website-github' target="_blank" class = "upto-label-link">
-            Learning JavaScript, HTML, and CSS so I can make this website with Vue
-          </a>
-        </div>
-      </li>
-      <li class = "upto-list-item">
-        <label class="upto-date">Dec. 2021</label>
-        <div class="upto-item upto-item-with-link">
-          <a href='https://github.com/ImWesAdams/Coursera-Python-Data-Science' target="_blank" class = "upto-label-link">
-            Coursera class on Data Science in Python
-          </a>
-        </div>
-      </li> -->
       <div v-for="upToItem in upToItems" :key="upToItem.id" class = "upto-list-item">
         <transition name="fadeQuick">
       <li v-if="upToItemsFiltered2.includes(upToItem)" :key="upToItem.id" class = "upto-list-item">
-        <!-- <div v-if="upToItemsFiltered2.includes(upToItem)"> -->
         <label class="upto-date">{{upToItem.date}}</label>
         <label class="category">{{upToItem.category}}</label>
         <div class="upto-item" @mouseover="showByIndex = upToItem" @mouseout="showByIndex = null">
@@ -72,9 +45,6 @@ import uniqueId from 'lodash';
 
   export default {
     methods: {
-    //   filterCategories() {
-    //   console.log(this.checkedCategories);
-    // }
     },
     data() {
       return {
@@ -82,7 +52,7 @@ import uniqueId from 'lodash';
         checkedCategories: [],
         upToItems: [
           // Don't include a link field and it will show as black text rather than formatted as link
-          {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
+          // {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
           {id: uniqueId('recom-'), date: 'Jan. 2022', category: 'Music', name: 'Ram by Paul McCartney', description: 'Maybe the first Indie album ever?', link: 'https://music.youtube.com/playlist?list=OLAK5uy_lAB-UgnvLAy8sIC2U65IX5eRSnBeNyFqU'},
           {id: uniqueId('recom-'), date: 'Jan. 2022', category: 'Book', name: 'The Death and Life of Great American Cities by Jane Jacobs', description: 'A book about cities and how "urban planning" can hurt them.', link: 'https://www.goodreads.com/book/show/30833.The_Death_and_Life_of_Great_American_Cities'},
           {id: uniqueId('recom-'), date: 'Jan. 2022', category: 'Music', name: 'You Will Never Know Why by Sweet Trip', description: 'Shoegaze, IDM, Dream Pop. Overall ear candy!', link: 'https://music.youtube.com/playlist?list=OLAK5uy_mibyq2bJnpGxzf66jcgVdt7Dps6tUEZn8'},
@@ -92,21 +62,12 @@ import uniqueId from 'lodash';
   },
   computed: {
     upToItemsFiltered2() {
-      // return this.upToItems.filter(function(item) {
-      //   return item.category.indexOf(item.category) >= 0;
       if (this.checkedCategories.length == 0) {
         return this.upToItems;
       }
       else {
-        // return this.checkedCategories;
         return this.upToItems.filter(upToItem => this.checkedCategories.includes(upToItem.category));
       }
-    //   else {
-    //     return this.upToItems.filter(function(item) {
-    //     return item.category.indexOf(this.checkedCategories) >= 0;
-    //   })
-    // }
-     // return this.jobs.filter(job => this.checkedUserIds.includes(job.userId))
     },
     uniqueCategories() {
       // return [...new Set(this.upToItems.category.map(x => x.item.Name))];
@@ -123,8 +84,6 @@ import uniqueId from 'lodash';
       });
 
       return output;
-      // return [this.upToItems.category];
-      // console.log(this.upToItems.category);
     }
   },
 }
@@ -138,27 +97,6 @@ import uniqueId from 'lodash';
   }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: all 0.5s ease;
-}
-
-.fade-enter-from, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  /* height: 200px; */
-  /* opacity: 0; */
-}
-
-.fadeQuick-enter-active, .fadeQuick-leave-active {
-  /* animation: shrink; */
-  transition: all 0.5s ease;
-}
-
-.fadeQuick-enter-from, .fadeQuick-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: rotateX(90deg);
-  /* max-height: 0px;
-  width: 200px; */
-}
 
 ul {
   margin: 0;

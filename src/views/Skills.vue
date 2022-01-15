@@ -1,23 +1,4 @@
-<!-- Link to LinkedIn. Link to download Resume PDF. -->
-<!-- What do you get with me?
 
-Experienced and Crafty Python and SQL Developer:
-Good at creating features with advanced data processing.
-Getting good features for ML is often the toughest part - why not have someone who excels at this?
-
-Lifelong learner:
-Came from a data background but wanted to learn enough JavaScript, HTMl, and CSS to make my own website.
-Avid reader of various non-fiction topics, especially socioeconomics and social psychology.
-Learned to decipher functional languages like Haskell and Elm.
-Pursuing masters in data science.
-
-Dedicated and Business-Minded
-High motor.
-Company visionary.
-Drives lower costs and higher revenues.
-Reliably informs corporate and product strategy.
-
- -->
  <template>
    <div class="all">
      <div class="header">
@@ -170,7 +151,6 @@ Reliably informs corporate and product strategy.
 
 import ExternalLinks from '@/components/ExternalLinks.vue';
 
-// import handleClick from '@/main.js';
 export default {
   name: 'Skills',
   components: {
@@ -267,7 +247,6 @@ data() {
 
 beforeUnmount() {
   // console.log('yo');
-  // this.pauseScroll(document.getElementById('other-skills1'));
   this.pauseScrollTag=true; // ~~this stops the setInterval loop from running when page is changed away :)
   // clearInterval(this.timerLeft);
   // clearInterval(this.timerRight);
@@ -277,11 +256,6 @@ beforeUnmount() {
 
 <style scoped>
 
-/* ~~ hide scroll bar to avoid the jittery manual scroll problem */
-/* ::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-  } */
 
 .all {
   margin-left: 10vw;
@@ -301,10 +275,6 @@ beforeUnmount() {
   /* margin: 0; */
 }
 
-/* .resume-links { ~~ commenting out the formatting here so I can use in App.vue and reuse the format across the site
-
-  } */
-
   .skill-header1 {
     padding-top: 0;
     text-align: left;
@@ -322,15 +292,6 @@ beforeUnmount() {
   /* margin: 0 10% 0 10%; */
 }
 
-/* @keyframes bannermove {
-  0% {
-      transform: translate(25%, 0);
-  }
-  100% {
-      transform: translate(-125%, 0%);
-  }
-} */
-
 .other-skills {
   display: flex;
   justify-content: space-between;
@@ -345,11 +306,6 @@ beforeUnmount() {
 
 }
 
-/* .all::-webkit-scrollbar {
-    display: none;
-} */
-
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans'); */
 
 h2 {
   /* font-family: "Open Sans", sans-serif; */
@@ -417,20 +373,4 @@ h1 {
   /* padding-top: 10px; */
   /* padding-bottom: 10px; */
 }
-
-/* figure {
-    display: inline-block;
-    border: 1px dotted gray;
-    margin: 20px;
-}
-figure img {
-    vertical-align: top;
-}
-figure figcaption {
-    border: 1px dotted blue;
-    text-align: center;
-} */
-/* .skill-item {
-  margin-top: 10px;
-} */
 </style>

@@ -8,37 +8,10 @@ const routes = [
     component: Home
   },
   {
-    path: '/AboutMe',
-    name: 'AboutMe',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutMe.vue')
-  },
-  {
     path: '/Skills',
     name: 'Skills',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Skills.vue')
+    component: () => import('../views/Skills.vue')
   },
-  // {
-  //   path: '/Resume',
-  //   name: 'Resume',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../assets/Resume.pdf')
-  // },
-  // {
-  //   path: '/SampleInfiniteScroll',
-  //   name: 'SampleInfiniteScroll',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/SampleInfiniteScroll.vue')
-  // }
 ]
 
 const router = createRouter({
