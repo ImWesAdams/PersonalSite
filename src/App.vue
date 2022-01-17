@@ -11,9 +11,9 @@
       <router-link to="/" class="name-link" style=" text-decoration:none; color:inherit;">Wes Adams</router-link>
     </h1>
 		<ul class="slider-menu">
-      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none; color:inherit;">Home</router-link></li>
-      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none; color:inherit;">Skills</router-link></li>
-      <li><a href="Resume.pdf" target="_blank" style="font-weight:inherit; text-decoration:none; color:inherit;">Resume</a></li>
+      <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
+      <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
+      <li><a href="Resume.pdf" class = "router" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
 		</ul>
 	</div>
 </div>
@@ -170,6 +170,14 @@ a:visited { /* ~~ router links count as a links so this gets rid of the visited 
 
 .container .name.router-link-exact-active {
   color: #2c3e50;
+}
+
+.router {
+  color: black;
+}
+
+.router:visited {
+  color: inherit;
 }
 
 .resume-links {
