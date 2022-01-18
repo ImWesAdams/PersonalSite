@@ -57,6 +57,7 @@ import uniqueId from 'lodash';
           {id: uniqueId('recom-'), date: 'Jan. 2022', category: 'Book', name: 'The Death and Life of Great American Cities by Jane Jacobs', description: 'A book about cities and how "urban planning" can hurt them.', link: 'https://www.goodreads.com/book/show/30833.The_Death_and_Life_of_Great_American_Cities'},
           {id: uniqueId('recom-'), date: 'Jan. 2022', category: 'Music', name: 'You Will Never Know Why by Sweet Trip', description: 'Shoegaze, IDM, Dream Pop. Overall ear candy!', link: 'https://music.youtube.com/playlist?list=OLAK5uy_mibyq2bJnpGxzf66jcgVdt7Dps6tUEZn8'},
           {id: uniqueId('recom-'), date: 'Dec. 2021', category: 'TV', name: 'Seinfeld', description: "It's just funny!", link: 'https://www.imdb.com/title/tt0098904/'},
+          {id: uniqueId('recom-'), date: 'Dec. 2021', category: 'Music', name: 'Nurture by Porter Robinson', description: "A standout in Electronic Music, and one of the best albums of 2021.", link: 'https://music.youtube.com/playlist?list=OLAK5uy_kxKxwJ58EGkW3L2xmJFGi2efuZLjPeYuE'}
         ],
       }
   },
