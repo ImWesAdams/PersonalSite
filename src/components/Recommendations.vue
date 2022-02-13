@@ -53,6 +53,7 @@ import uniqueId from 'lodash';
         upToItems: [
           // Don't include a link field and it will show as black text rather than formatted as link
           // {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
+          {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Music', name: 'Ants From Up There by Black Country, New Road', description: 'A really well-made and artistically interesting post-rock album.', link: 'https://music.youtube.com/playlist?list=OLAK5uy_lZfs0LSy8e0wgrU8sOAOINMzHeTq_NchE&feature=share'},
           {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Music', name: 'Fawn by Foxtails', description: 'Like a mix of screamo and post-rock with a violin??? Madness.', link: 'https://music.youtube.com/playlist?list=OLAK5uy_mTKON-1LMLP6_J-Z_Jk8OvDL_TUvqKQCk'},
           {id: uniqueId('recom-'), date: 'Jan. 2022', category: 'Music', name: 'Ram by Paul McCartney', description: 'Maybe the first Indie album ever?', link: 'https://music.youtube.com/playlist?list=OLAK5uy_lAB-UgnvLAy8sIC2U65IX5eRSnBeNyFqU'},
           {id: uniqueId('recom-'), date: 'Jan. 2022', category: 'Book', name: 'The Death and Life of Great American Cities by Jane Jacobs', description: 'A book about cities and how "urban planning" can hurt them.', link: 'https://www.goodreads.com/book/show/30833.The_Death_and_Life_of_Great_American_Cities'},
