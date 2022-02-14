@@ -55,10 +55,21 @@ import uniqueId from 'lodash';
           // Don't include a link field and it will show as black text rather than formatted as link
           // {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
           // {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data', description: 'Checking out nutrition data of foods that were analyzed by the FDA.', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
-          {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data', description: "It doesn't seem like relative analyst sentiment is a good predictor of most stocks' returns.", name: 'Analyzing Relationship between Relative Analyst Sentiment and Stock Return', link: 'https://github.com/ImWesAdams/Stock-Returns-Analysis/blob/main/Analyzing%20Impact%20of%20Analyst%20Recommendations%20on%20Individual%20Stock%20Performance.ipynb'},
-          {id: uniqueId('upto-'), date: 'Jan. 2022', category: 'Backend', description: 'Following along with a Django beginner turotial.', name: 'Learning Backend Development in Django', link: 'https://docs.djangoproject.com/en/4.0/intro/tutorial01/'},
-          {id: uniqueId('upto-'), date: 'Jan. 2022', category: 'Frontend', description: 'You can check out the code that made this website in my GitHub!', name: 'Making this website in Vue3 (with HTML, CSS, JavaScript)', link: 'https://github.com/ImWesAdams/PersonalSite'},
-          {id: uniqueId('upto-'), date: 'Dec. 2021', category: 'Data', description: 'Re-hashing some data skills and gaining some new ones from Coursera.', name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
+          {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data',
+            description: "It seems like more highly recommended stocks could actually outperform lowly recommended stocks.",
+              name: 'Analyzing Relationship between Analyst Sentiment and Stock Returns across Multiple Stocks', link: 'https://github.com/ImWesAdams/Stock-Returns-Analysis/blob/main/Analyzing%20Returns%20for%20Various%20Stocks%20by%20Analyst%20Recommendation.ipynb'},
+          {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data',
+            description: "It doesn't seem like relative analyst sentiment is a good predictor of most individual stocks' returns.",
+              name: 'Analyzing Relationship between Relative Analyst Sentiment and Individual Stock Return', link: 'https://github.com/ImWesAdams/Stock-Returns-Analysis/blob/main/Analyzing%20Impact%20of%20Analyst%20Recommendations%20on%20Individual%20Stock%20Performance.ipynb'},
+          {id: uniqueId('upto-'), date: 'Jan. 2022', category: 'Backend',
+            description: 'Following along with a Django beginner turotial.',
+              name: 'Learning Backend Development in Django', link: 'https://docs.djangoproject.com/en/4.0/intro/tutorial01/'},
+          {id: uniqueId('upto-'), date: 'Jan. 2022', category: 'Frontend',
+            description: 'You can check out the code that made this website in my GitHub!',
+              name: 'Making this website in Vue3 (with HTML, CSS, JavaScript)', link: 'https://github.com/ImWesAdams/PersonalSite'},
+          {id: uniqueId('upto-'), date: 'Dec. 2021', category: 'Data',
+            description: 'Re-hashing some data skills and gaining some new ones from Coursera.',
+              name: 'Coursera class on Data Science in Python', link: 'https://github.com/ImWesAdams/Coursera-Python-Data-Science'}
         ],
       }
   },
