@@ -56,7 +56,7 @@ import uniqueId from 'lodash';
           // {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
           // {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data', description: 'Checking out nutrition data of foods that were analyzed by the FDA.', name: 'Analyzing FDA Food Data in Python', link: 'link-to-fda'},
           {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data',
-            description: "It seems like more highly recommended stocks could actually outperform lowly recommended stocks.",
+            description: "It doesn't seem like more highly recommended stocks outperform lowly rated stocks. I'll stick to ETF investing!",
               name: 'Analyzing Relationship between Analyst Sentiment and Stock Returns across Multiple Stocks', link: 'https://github.com/ImWesAdams/Stock-Returns-Analysis/blob/main/Analyzing%20Returns%20for%20Various%20Stocks%20by%20Analyst%20Recommendation.ipynb'},
           {id: uniqueId('upto-'), date: 'Feb. 2022', category: 'Data',
             description: "It doesn't seem like relative analyst sentiment is a good predictor of most individual stocks' returns.",
