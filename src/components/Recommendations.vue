@@ -53,6 +53,8 @@ import uniqueId from 'lodash';
         upToItems: [
           // Don't include a link field and it will show as black text rather than formatted as link
           // {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Test', name: 'Test No Link'},
+          {id: uniqueId('recom-'), date: 'Apr. 2022', category: 'Music', name: 'Crest by Bladee and Ecco2k',
+            description: 'A very unique electronic+hip-hop album.', link: 'https://music.youtube.com/playlist?list=OLAK5uy_kF87Zvbu92YyUOjXCKJp43tIlblvh0Y0s&feature=share'},
           {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Music',
             name: 'London Calling by The Clash', description: 'An All-Time Classic Rock Album. Gets better with every listen!', link: 'https://music.youtube.com/playlist?list=OLAK5uy_keWoQUGetv5n5E7f2Zrg36XPMeLcKNXl4&feature=share'},
           {id: uniqueId('recom-'), date: 'Feb. 2022', category: 'Music',
