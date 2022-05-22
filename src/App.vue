@@ -13,7 +13,7 @@
 		<ul class="slider-menu">
       <li><router-link to="/" class = "router" style="font-weight:inherit; text-decoration:none;">Home</router-link></li>
       <li><router-link to="/Skills" class = "router" style="font-weight:inherit; text-decoration:none;">Skills</router-link></li>
-      <li><a href="Wes Data Resume New Format - Copy.pdf" class = "router" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
+      <li><a href="Wes Data Resume New Format (1).pdf" class = "router" target="_blank" style="font-weight:inherit; text-decoration:none;">Resume</a></li>
 		</ul>
 	</div>
 </div>
